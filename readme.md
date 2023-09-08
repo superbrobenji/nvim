@@ -16,6 +16,7 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - run `:so`
 - Run `:packerSync` to install all the packer files.
 - then type `:lua ColorMyPencils()` to apply the visual changes.
+- run `:Copilot setup` and follow the prompts
 - Restart Neovim.
 
 ## Current quirks

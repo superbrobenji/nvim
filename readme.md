@@ -12,7 +12,8 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 ### installation steps
 - Clone this repo inside your config path, you can find the path by opening Neovim and type `:h rtp`
 - Once cloned rename the `benjamin` folder to your preferred name and update the import in the root `init.lua` 
-- Navigate to `lua/<your name>` and open `packer.lua` in neovim
+- Navigate to `lua/<your name>` and open `packer.lua` in neovim. Don't worry about the errors.
+- run `:so`
 - Run `:packerSync` to install all the packer files.
 - then type `:lua ColorMyPencils()` to apply the visual changes.
 - Restart Neovim.

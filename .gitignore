@@ -1,5 +1,5 @@
 .DS_Store
 .nvimlog
-plugin
+/plugin
 after/.DS_Store
 

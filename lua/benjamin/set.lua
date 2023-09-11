@@ -12,10 +12,13 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
--- For Windows machines, uncomment the below line
--- vim.opt.undodir = os.getenv("UserProfile") .. "/.vim/undodir"
--- For Linux machines, comment the below line
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+
+-- Uncomment ONLY ONE below given your OS
+-- Windows
+ vim.opt.undodir = os.getenv("UserProfile") .. "/.vim/undodir"
+-- Linux
+-- vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false

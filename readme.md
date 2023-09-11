@@ -15,9 +15,24 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - Navigate to `lua/<your name>` and open `packer.lua` in neovim. Don't worry about the errors.
 - run `:so`
 - Run `:packerSync` to install all the packer files.
-- then type `:lua ColorMyPencils()` to apply the visual changes.
-- run `:Copilot setup` and follow the prompts
 - Restart Neovim.
+- run `:Copilot auth` and follow the prompts
+- restart Neovim again
+
+
+## Available commands
+- `:lua ColorMyPencils()` This resets the styling of Neovim after PackerSync is run.
+- `:Mason` This opens the LSP package manager where you can find and install any LSP config or linter you want
+- `:LspInstall` finds and installs any relevant Lsp packages or linters for you file you're on.
+
+## Things to note
+The general keymaps are under `/lua/<your name>/remap.lua`. Feel free to change them to your preference
+The keymaps for each plugin are under their respective config file in `/after/plugin`.
+The general settings for Neovim is under `/lua/<your name>/set.lua`
+
+
+## Adding new packages
+When you want to add a new package, add it to `/lua/<your name>/packer.lua` as the others are. Then create a new config file for in under `/after/plugin` as a `.lua` file.
 
 ## Current quirks
 There is one keymap that uses tmux that currently needs [tmux-sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer) and [tmux-windownizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-windowizer)

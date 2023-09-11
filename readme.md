@@ -8,6 +8,7 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - You need [neovim](https://neovim.io/) installed
 - You need Grep installed
 - You need tmux installed and configured (Steps in TODO)
+- If you want to use Copilot, you'll need a Copilot subscription
 
 ### installation steps
 - Clone this repo inside your config path, you can find the path by opening Neovim and type `:h rtp`

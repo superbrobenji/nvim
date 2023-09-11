@@ -12,7 +12,9 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
--- Change the below HOME to UserProfile for Windows
+-- For Windows machines, uncomment the below line
+-- vim.opt.undodir = os.getenv("UserProfile") .. "/.vim/undodir"
+-- For Linux machines, comment the below line
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 

@@ -26,9 +26,9 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - `:LspInstall` finds and installs any relevant Lsp packages or linters for you file you're on.
 
 ## Things to note
-The general keymaps are under `/lua/<your name>/remap.lua`. Feel free to change them to your preference
-The keymaps for each plugin are under their respective config file in `/after/plugin`.
-The general settings for Neovim is under `/lua/<your name>/set.lua`
+- The general keymaps are under `/lua/<your name>/remap.lua`. Feel free to change them to your preference
+- The keymaps for each plugin are under their respective config file in `/after/plugin`.
+- The general settings for Neovim is under `/lua/<your name>/set.lua`
 
 
 ## Adding new packages

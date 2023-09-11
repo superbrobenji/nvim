@@ -8,13 +8,14 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - You need [neovim](https://neovim.io/) installed
 - You need Grep installed
 - You need tmux installed and configured (Steps in TODO)
+- If you want to use Copilot, you'll need a Copilot subscription
 
 ### installation steps
 - Clone this repo inside your config path, you can find the path by opening Neovim and type `:h rtp`
 - Once cloned rename the `benjamin` folder to your preferred name and update the import in the root `init.lua` 
 - Navigate to `lua/<your name>` and open `packer.lua` in neovim. Don't worry about the errors.
 - run `:so`
-- Run `:packerSync` to install all the packer files.
+- Run `:PackerSync` to install all the packer files.
 - Restart Neovim.
 - run `:Copilot auth` and follow the prompts
 - restart Neovim again

@@ -29,7 +29,7 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - The general keymaps are under `/lua/<your name>/remap.lua`. Feel free to change them to your preference
 - The keymaps for each plugin are under their respective config file in `/after/plugin`.
 - The general settings for Neovim is under `/lua/<your name>/set.lua`
-
+- If you are using Windows. Go to the general settings file and change the undodir according to the comment
 
 ## Adding new packages
 When you want to add a new package, add it to `/lua/<your name>/packer.lua` as the others are. Then create a new config file for in under `/after/plugin` as a `.lua` file.

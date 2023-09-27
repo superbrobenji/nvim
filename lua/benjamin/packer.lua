@@ -27,7 +27,9 @@ return require('packer').startup(function(use)
     use("voldikss/vim-floaterm")
     use('jose-elias-alvarez/null-ls.nvim')
     use('MunifTanjim/prettier.nvim')
-    use { "zbirenbaum/copilot.lua" }
+    use("zbirenbaum/copilot.lua")
+    use('mattkubej/jest.nvim')
+
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',

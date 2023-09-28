@@ -23,6 +23,12 @@ vim.keymap.set("n", "<leader>w", "<C-w>w")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+--jest keymaps
+vim.keymap.set("n", "<leader>jtf", ":JestFile<CR>")
+vim.keymap.set("n", "<leader>jts", ":JestStop<CR>")
+vim.keymap.set("n", "<leader>jt", ":JestTest<CR>")
+vim.keymap.set("n", "<leader>jta", ":JestTestAll<CR>")
+
 --copy entire line 
 vim.keymap.set("n", "Y", "yg$")
 -- keep cursor at beginning of line when joining lines

@@ -14,6 +14,8 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - Clone this repo inside your config path, you can find the path by opening Neovim and type `:h rtp`
 - Once cloned rename the `benjamin` folder to your preferred name and update the import in the root `init.lua` 
 - Navigate to `lua/<your name>` and open `packer.lua` in neovim. Don't worry about the errors.
+- run in your shell `git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+  ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
 - run `:so`
 - Run `:PackerSync` to install all the packer files.
 - Restart Neovim.

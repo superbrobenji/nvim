@@ -15,9 +15,9 @@ vim.opt.backup = false
 
 -- Uncomment ONLY ONE below given your OS
 -- Windows
- vim.opt.undodir = os.getenv("UserProfile") .. "/.vim/undodir"
+-- vim.opt.undodir = os.getenv("UserProfile") .. "/.vim/undodir"
 -- Linux
--- vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
 vim.opt.undofile = true
 

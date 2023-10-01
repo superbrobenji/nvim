@@ -1,16 +1,26 @@
 -- enter vim file explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
--- comment and uncomment blocks of code
+-- comment and uncomment blocks of code using /
 vim.keymap.set("v", "<leader>/", ":s/^/\\/\\/<CR>")
 vim.keymap.set("v", "<leader>//", ":s/\\/\\//<CR>")
 vim.keymap.set("n", "<leader>/", ":s/^/\\/\\/<CR>")
 vim.keymap.set("n", "<leader>//", ":s/\\/\\//<CR>")
 
+
+-- comment and uncomment blocks of code using -
+vim.keymap.set("v", "<leader>-", ":s/^/\\-\\-<Space><CR>")
+vim.keymap.set("v", "<leader>--", ":s/\\-\\-<Space>//<CR>")
+vim.keymap.set("n", "<leader>-", ":s/^/\\-\\-<Space><CR>")
+vim.keymap.set("n", "<leader>--", ":s/\\-\\-<Space>//<CR>")
+
 -- FloaTerm configuration
-vim.keymap.set('n', "<leader>ft", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=2 fish <CR> ")
+vim.keymap.set('n', "<leader>ft", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=5 <CR> ")
 vim.keymap.set('n', "t", ":FloatermToggle myfloat<CR>")
 vim.keymap.set('t', "<Esc>", "<C-\\><C-n>:q<CR>")
+vim.keymap.set('t', "<C-p>", "<C-\\><C-n>:FloatermPrev<CR>")
+vim.keymap.set('t', "<C-n>", "<C-\\><C-n>:FloatermNext<CR>")
+vim.keymap.set('t', "<C-x>", "<C-\\><C-n>:FloatermKill<CR>")
 
 -- undo tree
 vim.keymap.set("n", "<leader>u", ":UndotreeShow<CR>")

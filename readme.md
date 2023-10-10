@@ -6,7 +6,7 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 
 ### prerequisites
 - You need [neovim](https://neovim.io/) installed
-- You need Grep installed
+- You need Grep and ripgrep installed
 - You need tmux installed and configured (Steps in TODO)
 - If you want to use Copilot, you'll need a Copilot subscription
 

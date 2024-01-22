@@ -74,9 +74,9 @@ vim.keymap.set("n", "Q", "<nop>")
 -- This remap will not work until tmux is set up and the script from the primagen is isntalled
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 --format all code in file
-vim.keymap.set("n", "<leader>f", function()
-    vim.lsp.buf.format()
-end)
+-- vim.keymap.set("n", "<leader>f", function()
+--     vim.lsp.buf.format()
+-- end)
 
 -- jest test file
 vim.keymap.set("n", "<leader>tf", function()

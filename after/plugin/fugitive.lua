@@ -1,6 +1,7 @@
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 vim.keymap.set("n", "<leader>gp", ":Git -c push.default=current push<CR>")
-vim.keymap.set("n", "<leader>gg", ":Git pull<CR>")
+vim.keymap.set("n", "<leader>gfp", ":Git push --set-upstream origin feature/SER-")
+vim.keymap.set("n", "<leader>gg", ":Git -c pull.default=current pull<CR>")
 vim.keymap.set("n", "<leader>grs", ":Git reset --soft HEAD^<CR>")
 vim.keymap.set("n", "<leader>gss", ":Git stash<CR>")
 vim.keymap.set("n", "<leader>gsp", ":Git stash pop<CR>")

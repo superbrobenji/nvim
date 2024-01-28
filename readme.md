@@ -25,8 +25,9 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 
 ## Available commands
 - `:lua ColorMyPencils()` This resets the styling of Neovim after PackerSync is run.
-- `:Mason` This opens the LSP package manager where you can find and install any LSP config or linter you want
+- `:Mason` This opens the LSP package manager where you can find and install any LSP config or linter you want.
 - `:LspInstall` finds and installs any relevant Lsp packages or linters for you file you're on.
+- `:TSUpdate` will update Treesitter.
 
 ## Things to note
 - The general keymaps are under `/lua/<your name>/remap.lua`. Feel free to change them to your preference

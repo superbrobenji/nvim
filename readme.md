@@ -40,6 +40,7 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - `:TSUpdate` will update Treesitter.
 
 ## Things to note
+- don't forget to run tmux before opening nvim if you want to be able to jump between projects quickly and easily
 - The general keymaps are under `/lua/<your name>/remap.lua`. Feel free to change them to your preference
 - The keymaps for each plugin are under their respective config file in `/after/plugin`.
 - The general settings for Neovim is under `/lua/<your name>/set.lua`

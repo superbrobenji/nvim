@@ -4,13 +4,13 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 
 ## Installation
 
-### prerequisites
+### Prerequisites
 - You need [neovim](https://neovim.io/) installed
 - You need Grep and ripgrep installed
 - You need tmux installed and configured (Steps in TODO)
 - If you want to use Copilot, you'll need a Copilot subscription
 
-### installation steps
+### Installation steps
 - Clone this repo inside your config path, you can find the path by opening Neovim and type `:h rtp`
 - Once cloned rename the `benjamin` folder to your preferred name and update the import in the root `init.lua` 
 - Navigate to `lua/<your name>` and open `packer.lua` in neovim. Don't worry about the errors.
@@ -22,6 +22,15 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - run `:Mason` and install `Prettierd` and `marksman` by pressing `i` over it.
 - run `:Copilot auth` and follow the prompts
 - restart Neovim again
+
+### Installing tmux and fzf
+#### Installing tmux
+- Run `sudo apt-get install tmux` for ubuntu or `brew install tmux` for mac users
+- copy the contents of `tmux-setup` into your home directory
+#### Installing fzf
+- Clone `git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf`
+- run `~/.fzf/install`
+
 
 
 ## Available commands

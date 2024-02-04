@@ -29,7 +29,11 @@ return require('packer').startup(function(use)
     use('MunifTanjim/prettier.nvim')
     use("zbirenbaum/copilot.lua")
     use('mattkubej/jest.nvim')
-
+    use('nvim-tree/nvim-web-devicons')
+    use({'nvim-tree/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'})
+    use('mfussenegger/nvim-dap')
+    use({ "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} })
+    use('folke/neodev.nvim')
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',

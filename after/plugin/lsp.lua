@@ -6,6 +6,7 @@ lsp.ensure_installed({
     'tsserver',
     'eslint',
     'lua_ls',
+    'grammarly',
     'gopls',
     'rust_analyzer',
     'graphql',

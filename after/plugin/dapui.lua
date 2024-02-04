@@ -1,0 +1,6 @@
+local dapui = require("dapui")
+dapui.setup()
+dapui.open()
+vim.keymap.set("n", "<leader>du", function()
+    dapui.toggle()
+end)

@@ -62,6 +62,13 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
 
+-- Dap commands
+-- run debugger with args
+vim.keymap.set('n', '<leader>R', ":RunScriptWithArgs ")
+-- build project
+vim.keymap.set('n', '<C-b>', ':lua vim.g.dotnet_build_project()<CR>', { noremap = true, silent = true })
+
+
 -- stay in normal and add new line
 vim.keymap.set("n", "<leader>o", "o<Esc>")
 vim.keymap.set("n", "<leader>O", "O<Esc>")
@@ -74,9 +81,9 @@ vim.keymap.set("n", "Q", "<nop>")
 -- This remap will not work until tmux is set up and the script from the primagen is isntalled
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/scripts/tmux-sessionizer.sh<CR>")
 --format all code in file
--- vim.keymap.set("n", "<leader>f", function()
---     vim.lsp.buf.format()
--- end)
+vim.keymap.set("n", "<leader>f", function()
+    vim.lsp.buf.format()
+end)
 
 -- jest test file
 vim.keymap.set("n", "<leader>tf", function()

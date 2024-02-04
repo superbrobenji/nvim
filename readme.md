@@ -19,6 +19,7 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - run `:so`
 - Run `:PackerSync` to install all the packer files.
 - Restart Neovim.
+- run `:Mason` and install `Prettierd` and `marksman` by pressing `i` over it.
 - run `:Copilot auth` and follow the prompts
 - restart Neovim again
 

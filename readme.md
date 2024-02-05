@@ -57,3 +57,5 @@ There is one keymap that uses tmux that currently needs [tmux-sessionizer](https
 - fresh install tests on linux and mac and update installation steps accordingly
 - fix grammarly plugin on linux
 - fix marksman plugin on linux
+- debug lsp-lense to work more reliably
+- possinbly write plugin to integrate nuget gallery to nvim

@@ -30,8 +30,6 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - Clone `git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf`.
 - Run `~/.fzf/install`.
 
-
-
 ## Available commands
 - `:lua ColorMyPencils()` This resets the styling of Neovim after PackerSync is run.
 - `:Mason` This opens the LSP package manager where you can find and install any LSP config or linter you want.
@@ -50,3 +48,12 @@ When you want to add a new package, add it to `/lua/<your name>/packer.lua` as t
 
 ## Current quirks
 There is one keymap that uses tmux that currently needs [tmux-sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer) and [tmux-windownizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-windowizer)
+
+## TODOs
+- Add Node debugger for chrome and node in dap
+- test csharp dap debugger
+- add the font installations steps for the nvimWebDevIcons plugin on linux
+- test nvim setup on windows and document installation steps
+- fresh install tests on linux and mac and update installation steps accordingly
+- fix grammarly plugin on linux
+- fix marksman plugin on linux

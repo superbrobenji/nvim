@@ -34,6 +34,7 @@ return require('packer').startup(function(use)
     use('mfussenegger/nvim-dap')
     use({ "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} })
     use('folke/neodev.nvim')
+    use('VidocqH/lsp-lens.nvim')
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',

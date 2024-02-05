@@ -4,6 +4,7 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
     'tsserver',
+    'charp_ls',
     'eslint',
     'lua_ls',
     'grammarly',

@@ -8,7 +8,8 @@ lsp.ensure_installed({
     'eslint',
     'lua_ls',
     'grammarly',
-    'gopls',
+    -- add gopls if you are gooing to dev with go, remember to install go first
+    --     'gopls',
     'rust_analyzer',
     'graphql',
 })

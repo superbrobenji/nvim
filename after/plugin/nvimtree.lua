@@ -11,9 +11,14 @@ nvimTree.setup({
     sorter = "case_sensitive",
   },
   view = {
-    width = 30,
+    width = 50,
   },
   renderer = {
     group_empty = true,
   },
+  git = {
+      enable = true,
+      ignore = false,
+      timeout = 500,
+  }
 })

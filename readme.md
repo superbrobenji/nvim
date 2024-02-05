@@ -5,30 +5,30 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 ## Installation
 
 ### Prerequisites
-- You need [neovim](https://neovim.io/) installed
-- You need Grep and ripgrep installed
-- If you want to use Copilot, you'll need a Copilot subscription
+- You need [neovim](https://neovim.io/) installed.
+- You need Grep and ripgrep installed.
+- If you want to use Copilot, you'll need a Copilot subscription.
 
 ### Installation steps
-- Clone this repo inside your config path, you can find the path by opening Neovim and type `:h rtp`
-- Once cloned rename the `benjamin` folder to your preferred name and update the import in the root `init.lua` 
+- Clone this repo inside your config path, you can find the path by opening Neovim and type `:h rtp`.
+- Once cloned rename the `benjamin` folder to your preferred name and update the import in the root `init.lua` .
 - Navigate to `lua/<your name>` and open `packer.lua` in neovim. Don't worry about the errors.
 - run in your shell `git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-  ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
-- run `:so`
+  ~/.local/share/nvim/site/pack/packer/start/packer.nvim`.
+- Run `:so`
 - Run `:PackerSync` to install all the packer files.
 - Restart Neovim.
-- run `:Mason` and install `Prettierd` and `marksman` by pressing `i` over it.
-- run `:Copilot auth` and follow the prompts
-- restart Neovim again
+- Run `:Mason` and install `Prettierd`, `Prettier`, `Eslint_d`, `netcoredbg` and `marksman` by pressing `i` over it.
+- Run `:Copilot auth` and follow the prompts.
+- Restart Neovim again
 
 ### Installing tmux and fzf
 #### Installing tmux
-- Run `sudo apt-get install tmux` for ubuntu or `brew install tmux` for mac users
-- copy the contents of `tmux-setup` into your home directory
+- Run `sudo apt-get install tmux` for ubuntu or `brew install tmux` for mac users.
+- copy the contents of `tmux-setup` into your home directory.
 #### Installing fzf
-- Clone `git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf`
-- run `~/.fzf/install`
+- Clone `git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf`.
+- Run `~/.fzf/install`.
 
 
 
@@ -39,11 +39,11 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - `:TSUpdate` will update Treesitter.
 
 ## Things to note
-- don't forget to run tmux before opening nvim if you want to be able to jump between projects quickly and easily
-- The general keymaps are under `/lua/<your name>/remap.lua`. Feel free to change them to your preference
+- Ron't forget to run tmux before opening nvim if you want to be able to jump between projects quickly and easily.
+- The general keymaps are under `/lua/<your name>/remap.lua`. Feel free to change them to your preference.
 - The keymaps for each plugin are under their respective config file in `/after/plugin`.
 - The general settings for Neovim is under `/lua/<your name>/set.lua`
-- If you are using Windows. Go to the general settings file and change the undodir according to the comment
+- If you are using Windows. Go to the general settings file and change the undodir according to the comment.
 
 ## Adding new packages
 When you want to add a new package, add it to `/lua/<your name>/packer.lua` as the others are. Then create a new config file for in under `/after/plugin` as a `.lua` file.

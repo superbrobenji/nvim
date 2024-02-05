@@ -6,6 +6,7 @@ lsp.ensure_installed({
     'tsserver',
     'csharp_ls',
     'eslint',
+    'jsonls',
     'lua_ls',
     'grammarly',
     -- add gopls if you are gooing to dev with go, remember to install go first

@@ -48,6 +48,7 @@ When you want to add a new package, add it to `/lua/<your name>/packer.lua` as t
 
 ## TODOs
 - Fix formatting on save and `<leader>f` formatting for TS and JS projects using prettier files.
+- Add run commands for anything that needs an npm package or external dependency to packer file.
 - Add Node debugger for chrome and node in dap.
 - Test csharp dap debugger.
 - Add the font installations steps for the nvimWebDevIcons plugin on linux.

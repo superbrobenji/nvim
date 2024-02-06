@@ -47,12 +47,13 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 When you want to add a new package, add it to `/lua/<your name>/packer.lua` as the others are. Then create a new config file for in under `/after/plugin` as a `.lua` file.
 
 ## TODOs
-- Add Node debugger for chrome and node in dap
-- test csharp dap debugger
-- add the font installations steps for the nvimWebDevIcons plugin on linux
-- test nvim setup on windows and document installation steps
-- fresh install tests on linux and mac and update installation steps accordingly
-- fix grammarly plugin on linux
-- fix marksman plugin on linux
-- debug lsp-lense to work more reliably
-- possinbly write plugin to integrate nuget gallery to nvim
+- Fix formatting on save and `<leader>f` formatting for TS and JS projects using prettier files.
+- Add Node debugger for chrome and node in dap.
+- Test csharp dap debugger.
+- Add the font installations steps for the nvimWebDevIcons plugin on linux.
+- Test nvim setup on windows and document installation steps.
+- Fresh install tests on linux and mac and update installation steps accordingly.
+- Fix grammarly plugin on linux.
+- Fix marksman plugin on linux.
+- Debug lsp-lense to work more reliably.
+- Possinbly write plugin to integrate nuget gallery to nvim.

@@ -1,5 +1,3 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
@@ -25,8 +23,10 @@ return require('packer').startup(function(use)
     use('tpope/vim-fugitive')
     use('neovim/nvim-lspconfig')
     use("voldikss/vim-floaterm")
-    use('jose-elias-alvarez/null-ls.nvim')
-    use('MunifTanjim/prettier.nvim')
+    use { 'prettier/vim-prettier',
+        run = 'yarn install',
+        ft = { 'javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'markdown', 'vue', 'html' }
+    }
     use("zbirenbaum/copilot.lua")
     use('mattkubej/jest.nvim')
     use('nvim-tree/nvim-web-devicons')

@@ -4,13 +4,14 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
     'tsserver',
-    'csharp_ls',
+    -- add csharp_ls if you are going to dev with csharp, remember to install dotnet-sdk first
+    -- 'csharp_ls',
     'eslint',
     'jsonls',
     'lua_ls',
     'grammarly',
     -- add gopls if you are gooing to dev with go, remember to install go first
-    --     'gopls',
+    -- 'gopls',
     'rust_analyzer',
     'graphql',
 })
@@ -63,5 +64,6 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
+
 
 lsp.setup()

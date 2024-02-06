@@ -46,9 +46,6 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 ## Adding new packages
 When you want to add a new package, add it to `/lua/<your name>/packer.lua` as the others are. Then create a new config file for in under `/after/plugin` as a `.lua` file.
 
-## Current quirks
-There is one keymap that uses tmux that currently needs [tmux-sessionizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer) and [tmux-windownizer](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-windowizer)
-
 ## TODOs
 - Add Node debugger for chrome and node in dap
 - test csharp dap debugger

@@ -44,8 +44,7 @@ vim.keymap.set("n", "<leader>l", ":LspLensToggle<CR>")
 --jest keymaps
 vim.keymap.set("n", "<leader>jtf", ":JestFile<CR>")
 vim.keymap.set("n", "<leader>jts", ":JestStop<CR>")
-vim.keymap.set("n", "<leader>jt", ":JestTest<CR>")
-vim.keymap.set("n", "<leader>jta", ":JestTestAll<CR>")
+vim.keymap.set("n", "<leader>jta", ":Jest<CR>")
 
 --copy entire line 
 vim.keymap.set("n", "Y", "yg$")

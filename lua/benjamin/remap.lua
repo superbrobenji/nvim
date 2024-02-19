@@ -1,6 +1,11 @@
 -- enter vim file explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+-- rest commands
+vim.keymap.set("n", "<leader>rp", "<Plug>RestNvim")
+vim.keymap.set("n", "<leader>rr", "<Plug>RestNvimLast")
+vim.keymap.set("n", "<leader>rh", "<Plug>RestNvimPreview")
+
 -- comment and uncomment blocks of code using /
 vim.keymap.set("v", "<leader>/", ":s/^/\\/\\/<CR>")
 vim.keymap.set("v", "<leader>//", ":s/\\/\\//<CR>")

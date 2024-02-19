@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
         run = 'yarn install',
         ft = { 'javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'markdown', 'vue', 'html' }
     }
+    use { 'rest-nvim/rest.nvim', requires = { 'nvim-lua/plenary.nvim' } }
     use("zbirenbaum/copilot.lua")
     use('mattkubej/jest.nvim')
     use('nvim-tree/nvim-web-devicons')
@@ -34,7 +35,6 @@ return require('packer').startup(function(use)
     use('mfussenegger/nvim-dap')
     use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
     use('folke/neodev.nvim')
-    use('VidocqH/lsp-lens.nvim')
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',

@@ -1,4 +1,8 @@
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+local function openGit()
+    vim.cmd.Git()
+    vim.api.nvim_win_set_height(0, 15)
+end
+vim.keymap.set("n", "<leader>gs", openGit)
 vim.keymap.set("n", "<leader>gp", ":Git -c push.default=current push<CR>")
 vim.keymap.set("n", "<leader>gfp", ":Git push --set-upstream origin feature/SER-")
 vim.keymap.set("n", "<leader>gg", ":Git -c pull.default=current pull<CR>")

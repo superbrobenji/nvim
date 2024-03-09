@@ -22,7 +22,7 @@ lsp.ensure_installed({
     'lua_ls',
     'grammarly',
     -- add gopls if you are gooing to dev with go, remember to install go first
-    -- 'gopls',
+    'gopls',
     'rust_analyzer',
     'graphql',
 })
@@ -61,7 +61,6 @@ lsp.set_preferences({
 lsp.setup_nvim_cmp({
     mapping = cmp_mappings
 })
-
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 --     lsp_format_on_save(bufnr)

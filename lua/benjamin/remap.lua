@@ -38,9 +38,6 @@ vim.keymap.set("n", "<leader>w", "<C-w>w")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- lsp lense
-vim.keymap.set("n", "<leader>l", ":LspLensToggle<CR>")
-
 --jest keymaps
 vim.keymap.set("n", "<leader>jtf", ":JestFile<CR>")
 vim.keymap.set("n", "<leader>jts", ":JestStop<CR>")

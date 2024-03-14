@@ -35,8 +35,8 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 #### Installing Fira Code fonts
 - For linux, run `sudo apt install fonts-firacode`
 - For macos:
--- Run `brew tap homebrew/cask-fonts`
--- Run `brew install --cask font-fira-code`
+ - Run `brew tap homebrew/cask-fonts`
+ - Run `brew install --cask font-fira-code`
 #### Config files
 - Copy the files from kitty-config into the kitty folder in your config path
 
@@ -71,7 +71,6 @@ When you want to add a new package, add it to `/lua/<your name>/packer.lua` as t
 - Add run commands for anything that needs an npm package or external dependency to packer file.
 - Add Node debugger for chrome and node in dap.
 - Test csharp dap debugger.
-- Add the font installations steps for the nvimWebDevIcons plugin on linux.
 - Test nvim setup on windows and document installation steps.
 - Fresh install tests on linux and mac and update installation steps accordingly.
 - Fix grammarly plugin on linux.

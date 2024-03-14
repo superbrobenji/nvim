@@ -23,7 +23,8 @@ return require('packer').startup(function(use)
             vim.cmd('colorscheme tokyonight')
         end
     })
-    use "lukas-reineke/indent-blankline.nvim"
+    use("lukas-reineke/indent-blankline.nvim")
+    use("HiPhish/rainbow-delimiters.nvim")
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
     use('ThePrimeagen/harpoon')

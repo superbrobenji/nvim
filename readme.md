@@ -22,6 +22,25 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - Run `:Copilot auth` and follow the prompts.
 - Restart Neovim again
 
+### Installing Kitty terminal
+#### Installing Kitty
+- Run `curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin`
+- OR you can install it manually from [Kitty](https://github.com/kovidgoyal/kitty/releases)
+#### Desktop Integration on Linux
+- Run `ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/`
+- Run `cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/`
+- Run `cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/`
+- Run `sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop`
+- Run `sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop`
+#### Installing Fira Code fonts
+- For linux, run `sudo apt install fonts-firacode`
+- For macos:
+-- Run `brew tap homebrew/cask-fonts`
+-- Run `brew install --cask font-fira-code`
+#### Config files
+- Copy the files from kitty-config into the kitty folder in your config path
+
+
 ### Installing tmux and fzf
 #### Installing tmux
 - Run `sudo apt-get install tmux` for ubuntu or `brew install tmux` for mac users.
@@ -42,12 +61,12 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - The keymaps for each plugin are under their respective config file in `/after/plugin`.
 - The general settings for Neovim is under `/lua/<your name>/set.lua`
 - If you are using Windows. Go to the general settings file and change the undodir according to the comment.
+- if the icons on the nvim-tree isn't working properly you need to download a [NerdFont](https://www.nerdfonts.com/font-downloads)
 
 ## Adding new packages
 When you want to add a new package, add it to `/lua/<your name>/packer.lua` as the others are. Then create a new config file for in under `/after/plugin` as a `.lua` file.
 
 ## TODOs
-- Add functionality to file tree to open file location of ope file 
 - Fix formatting on save and `<leader>f` formatting for TS and JS projects using prettier files.
 - Add run commands for anything that needs an npm package or external dependency to packer file.
 - Add Node debugger for chrome and node in dap.

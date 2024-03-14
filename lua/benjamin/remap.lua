@@ -38,11 +38,6 @@ vim.keymap.set("n", "<leader>w", "<C-w>w")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
---jest keymaps
-vim.keymap.set("n", "<leader>jtf", ":JestFile<CR>")
-vim.keymap.set("n", "<leader>jts", ":JestStop<CR>")
-vim.keymap.set("n", "<leader>jta", ":Jest<CR>")
-
 --copy entire line 
 vim.keymap.set("n", "Y", "yg$")
 -- keep cursor at beginning of line when joining lines
@@ -82,17 +77,24 @@ vim.keymap.set("n", "<C-c>", "<Esc>")
 
 -- don't worry about this
 vim.keymap.set("n", "Q", "<nop>")
--- This remap will not work until tmux is set up and the script from the primagen is isntalled
+-- This remap will not work until tmux is set up and the script is installed
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/scripts/tmux-sessionizer.sh<CR>")
 --format all code in file
 vim.keymap.set("n", "<leader>f", function()
     vim.lsp.buf.format()
 end)
 
--- jest test file
+-- jest 
 vim.keymap.set("n", "<leader>tf", function()
     require('nvim-jest').test_file()
 end)
+vim.keymap.set("n", "<leader>ts", function()
+    require('nvim-jest').test_single()
+end)
+vim.keymap.set("n", "<leader>js", function()
+    require('nvim-jest').test_stop()
+end)
+vim.keymap.set("n", "<leader>js", ":JestStop<CR>")
 
 -- navigate errors and locations
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")

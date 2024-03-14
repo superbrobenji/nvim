@@ -21,8 +21,8 @@ lsp.ensure_installed({
     'jsonls',
     'lua_ls',
     'grammarly',
-    -- add gopls if you are gooing to dev with go, remember to install go first
-    'gopls',
+    -- add gopls if you are going to dev with go, remember to install go first
+    --'gopls',
     'rust_analyzer',
     'graphql',
 })

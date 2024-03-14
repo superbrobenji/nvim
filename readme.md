@@ -35,8 +35,8 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 #### Installing Fira Code fonts
 - For linux, run `sudo apt install fonts-firacode`
 - For macos:
- - Run `brew tap homebrew/cask-fonts`
- - Run `brew install --cask font-fira-code`
+  - Run `brew tap homebrew/cask-fonts`
+  - Run `brew install --cask font-fira-code`
 #### Config files
 - Copy the files from kitty-config into the kitty folder in your config path
 

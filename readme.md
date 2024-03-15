@@ -37,8 +37,11 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - For macos:
   - Run `brew tap homebrew/cask-fonts`
   - Run `brew install --cask font-fira-code`
+#### Installing Oh My Zsh
+- TODO
 #### Config files
-- Copy the files from kitty-config into the kitty folder in your config path
+- Copy the files from kitty-config into the kitty folder in your config path.
+- Copy the files from zsh-dotfiles to your config file.
 
 
 ### Installing tmux and fzf

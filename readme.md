@@ -70,6 +70,7 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 When you want to add a new package, add it to `/lua/<your name>/packer.lua` as the others are. Then create a new config file for in under `/after/plugin` as a `.lua` file.
 
 ## TODOs
+- Create a bash script file that does all the setup for you.
 - Fix formatting on save and `<leader>f` formatting for TS and JS projects using prettier files.
 - Add run commands for anything that needs an npm package or external dependency to packer file.
 - Add Node debugger for chrome and node in dap.

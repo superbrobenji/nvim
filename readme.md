@@ -11,7 +11,7 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 
 ### Installation steps
 - Clone this repo inside your config path, you can find the path by opening Neovim and type `:h rtp`.
-- Once cloned rename the `benjamin` folder to your preferred name and update the import in the root `init.lua` .
+- Once cloned rename the `benjamin` folder to your preferred name and update the import in the root `init.lua`.
 - Navigate to `lua/<your name>` and open `packer.lua` in neovim. Don't worry about the errors.
 - run in your shell `git clone --depth 1 https://github.com/wbthomason/packer.nvim\
   ~/.local/share/nvim/site/pack/packer/start/packer.nvim`.
@@ -60,8 +60,8 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - The general keymaps are under `/lua/<your name>/remap.lua`. Feel free to change them to your preference.
 - The keymaps for each plugin are under their respective config file in `/after/plugin`.
 - The general settings for Neovim is under `/lua/<your name>/set.lua`
-- If you are using Windows. Go to the general settings file and change the undodir according to the comment.
-- if the icons on the nvim-tree isn't working properly you need to download a [NerdFont](https://www.nerdfonts.com/font-downloads)
+- If you are using Windows. Go to the `set.lua` file and change the undodir according to the comment.
+- If the icons on the nvim-tree isn't working properly you need to download a [NerdFont](https://www.nerdfonts.com/font-downloads)
 
 ## Adding new packages
 When you want to add a new package, add it to `/lua/<your name>/packer.lua` as the others are. Then create a new config file for in under `/after/plugin` as a `.lua` file.

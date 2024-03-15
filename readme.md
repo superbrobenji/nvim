@@ -80,3 +80,4 @@ When you want to add a new package, add it to `/lua/<your name>/packer.lua` as t
 - Fix grammarly plugin on linux.
 - Fix marksman plugin on linux.
 - Possinbly write plugin to integrate nuget gallery to nvim.
+- name it TerraVim? maybe make it a vim distro?

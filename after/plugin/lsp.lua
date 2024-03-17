@@ -15,6 +15,7 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
     'tsserver',
+    'bashls',
     -- add csharp_ls if you are going to dev with csharp, remember to install dotnet-sdk first
     -- 'csharp_ls',
     'eslint',

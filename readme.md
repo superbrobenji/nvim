@@ -61,14 +61,6 @@ When you want to add a new package, add it to `/lua/terravim/plugins.lua` as the
 
 ## TODOs
 - Steal this dude's [lsp](https://github.com/downzed/.dotfiles/blob/main/.config/nvim/lua/plugins/completions.lua)
-- Create a bash script file that does all the setup for you.
-- Fix formatting on save and `<leader>f` formatting for TS and JS projects using prettier files.
-- Add run commands for anything that needs an npm package or external dependency to packer file.
+- Investigate how above dude handles git actions.
 - Add Node debugger for chrome and node in dap.
-- Test csharp dap debugger.
-- Test nvim setup on windows and document installation steps.
-- Fresh install tests on linux and mac and update installation steps accordingly.
-- Fix grammarly plugin on linux.
-- Fix marksman plugin on linux.
 - Possinbly write plugin to integrate nuget gallery to nvim.
-- name it TerraVim? maybe make it a vim distro?

@@ -8,7 +8,6 @@ local plugins = {
             vim.cmd([[colorscheme tokyonight]])
         end,
     },
-
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.6',

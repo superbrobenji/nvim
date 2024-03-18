@@ -26,4 +26,4 @@ local gitsigns_opts = {
     silent = true,
 }
 
-vim.api.nvim_set_keymap("n", "<leader>gp", ":Gitsigns<CR>", gitsigns_opts)
+vim.api.nvim_set_keymap("n", "<leader>gso", ":Gitsigns<CR>", gitsigns_opts)

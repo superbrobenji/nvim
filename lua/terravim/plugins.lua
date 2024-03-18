@@ -44,15 +44,29 @@ local plugins = {
     { "mbbill/undotree" },
     { "tpope/vim-fugitive" },
     { "voldikss/vim-floaterm" },
+    { "WhoIsSethDaniel/mason-tool-installer.nvim" },
     {
-        "nvim-tree/nvim-tree.lua",
-        version = "*",
-        lazy = false,
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
         dependencies = {
+            "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
         }
     },
-    { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
+    {
+        "letieu/harpoon-lualine",
+        dependencies = {
+            {
+                "ThePrimeagen/harpoon",
+                branch = "harpoon2",
+            }
+        },
+    },
 
 }
 return plugins

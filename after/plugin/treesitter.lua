@@ -18,4 +18,11 @@ require('nvim-treesitter.configs').setup({
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false,
     },
+    rainbow = { enabled = true },
+    indent = { enable = true },
+    autotag = { enable = true },
+})
+
+require('treesitter-context').setup({
+    multiline_threshold = 4,
 })

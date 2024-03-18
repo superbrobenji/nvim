@@ -13,7 +13,14 @@ local plugins = {
         tag = '0.1.6',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    { 'nvim-treesitter/nvim-treesitter',     build = ':TSUpdate' },
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+        dependencies = {
+            "windwp/nvim-ts-autotag",
+        },
+    },
+    { "nvim-treesitter/nvim-treesitter-context" },
     {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
@@ -29,6 +36,8 @@ local plugins = {
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/nvim-cmp' },
             { 'L3MON4D3/LuaSnip' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { "folke/neodev.nvim", opts = {} },
         }
     },
     {
@@ -37,7 +46,7 @@ local plugins = {
         event = "InsertEnter",
     },
     { "zbirenbaum/copilot-cmp" },
-    { "lukas-reineke/indent-blankline.nvim", lazy = false,       main = "ibl", opts = {} },
+    { "lukas-reineke/indent-blankline.nvim",    lazy = false, main = "ibl", opts = {} },
     { "HiPhish/rainbow-delimiters.nvim" },
     lazy = false,
     { "mbbill/undotree" },

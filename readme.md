@@ -59,7 +59,7 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 ## Adding new packages
 When you want to add a new package, add it to `/lua/terravim/plugins.lua` as the others are. Then create a new config file for in under `/after/plugin` as a `.lua` file.
 
-## Git defaults
+## Set Git defaults
 - `git config --global pull.rebase true`
 - `git config --global fetch.prune true`
 - `git config --global pull.default current`

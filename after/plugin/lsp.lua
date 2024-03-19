@@ -49,64 +49,88 @@ local lsp_config = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- language server handlers
-lsp_config.lua_ls.setup({
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            format = {
-                enable = true,
-            },
-            completion = {
-                callSnippet = "Replace"
-            },
-            diagnostics = {
-                globals = { 'vim' }
+local lua_ls = function()
+    lsp_config.lua_ls.setup({
+        capabilities = capabilities,
+        settings = {
+            Lua = {
+                format = {
+                    enable = true,
+                },
+                completion = {
+                    callSnippet = "Replace"
+                },
+                diagnostics = {
+                    globals = { 'vim' }
+                }
             }
         }
-    }
-})
+    })
+end
 
-lsp_config.graphql.setup({
-    capabilities = capabilities,
-})
+local graphql = function()
+    lsp_config.graphql.setup({
+        capabilities = capabilities,
+        filetypes = {
+            "graphql",
+            "typescriptreact",
+            "javascriptreact",
+            "typescript"
+        },
+    })
+end
 
-lsp_config.bashls.setup({
-    capabilities = capabilities,
-})
+local bashls = function()
+    lsp_config.bashls.setup({
+        capabilities = capabilities,
+    })
+end
 
-lsp_config.jsonls.setup({
-    capabilities = capabilities,
-})
+local jsonls = function()
+    lsp_config.jsonls.setup({
+        capabilities = capabilities,
+    })
+end
 
-lsp_config.taplo.setup({
-    capabilities = capabilities,
-})
+local taplo = function()
+    lsp_config.taplo.setup({
+        capabilities = capabilities,
+    })
+end
 
-lsp_config.eslint.setup({
-    capabilities = capabilities,
-    root_dir = lsp_config.util.root_pattern("package.json", "package-lock.json"),
-    filetypes = {
-        "typescript",
-        "typescriptreact",
-        "typescript.tsx",
-        "javascript",
-        "javascriptreact",
-        "javascript.jsx"
-    },
-    single_file_support = true
-})
+local eslint = function()
+    lsp_config.eslint.setup({
+        capabilities = capabilities,
+        root_dir = lsp_config.util.root_pattern("package.json", "package-lock.json"),
+        filetypes = {
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx",
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx"
+        },
+        single_file_support = true
+    })
+end
 
-lsp_config.tsserver.setup({
-    capabilities = capabilities,
-})
+local tsserver = function()
+    lsp_config.tsserver.setup({
+        capabilities = capabilities,
+    })
+end
 
-lsp_config.yamlls.setup({
-    capabilities = capabilities,
-})
+local yamlls = function()
+    lsp_config.yamlls.setup({
+        capabilities = capabilities,
+    })
+end
 
-lsp_config.dockerls.setup({
-    capabilities = capabilities,
-})
+local dockerls = function()
+    lsp_config.dockerls.setup({
+        capabilities = capabilities,
+    })
+end
 
 local check_eslint_config = function(client)
     if client.name ~= "eslint" and client.name ~= "tsserver" then
@@ -121,7 +145,6 @@ local ensure_installed = {
     'eslint',
     'jsonls',
     'lua_ls',
-    'rust_analyzer',
     'graphql',
     'dockerls',
 }
@@ -163,6 +186,18 @@ end)
 require("mason").setup({})
 require("mason-lspconfig").setup({
     ensure_installed = ensure_installed,
+    handlers = {
+        lsp.default_setup,
+        lua_ls = lua_ls,
+        graphql = graphql,
+        bashls = bashls,
+        jsonls = jsonls,
+        taplo = taplo,
+        eslint = eslint,
+        tsserver = tsserver,
+        yamlls = yamlls,
+        dockerls = dockerls,
+    }
 })
 
 

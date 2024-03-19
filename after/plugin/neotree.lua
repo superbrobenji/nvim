@@ -1,6 +1,7 @@
 require("neo-tree").setup({
     window = {
         position = "left",
+        width = 50,
     },
     event_handlers = {
         {
@@ -24,7 +25,10 @@ require("neo-tree").setup({
                 '.git',
                 '.DS_Store',
             },
-            never_show = {},
+            never_show = {
+                '.git',
+                '.SD_Store',
+            },
         },
     },
 })

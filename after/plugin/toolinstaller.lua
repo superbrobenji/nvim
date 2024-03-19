@@ -9,6 +9,8 @@ require('mason-tool-installer').setup {
 
         'bashls',
 
+        'dockerls',
+
         'tsserver',
         'eslint',
         'bslint',

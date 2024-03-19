@@ -66,6 +66,18 @@ lsp_config.lua_ls.setup({
     }
 })
 
+lsp_config.graphql.setup({
+    capabilities = capabilities,
+})
+
+lsp_config.bashls.setup({
+    capabilities = capabilities,
+})
+
+lsp_config.jsonls.setup({
+    capabilities = capabilities,
+})
+
 lsp_config.taplo.setup({
     capabilities = capabilities,
 })
@@ -88,6 +100,14 @@ lsp_config.tsserver.setup({
     capabilities = capabilities,
 })
 
+lsp_config.yamlls.setup({
+    capabilities = capabilities,
+})
+
+lsp_config.dockerls.setup({
+    capabilities = capabilities,
+})
+
 local check_eslint_config = function(client)
     if client.name ~= "eslint" and client.name ~= "tsserver" then
         return false
@@ -101,9 +121,9 @@ local ensure_installed = {
     'eslint',
     'jsonls',
     'lua_ls',
-    'grammarly',
     'rust_analyzer',
     'graphql',
+    'dockerls',
 }
 
 

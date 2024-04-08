@@ -78,6 +78,10 @@ local plugins = {
         },
     },
     { "lewis6991/gitsigns.nvim" },
+    {
+        'stevearc/conform.nvim',
+        opts = {},
+    },
 
 }
 return plugins

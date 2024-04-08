@@ -101,6 +101,7 @@ end
 local eslint = function()
     lsp_config.eslint.setup({
         capabilities = capabilities,
+        flags = { debounce_text_changes = 500 },
         root_dir = lsp_config.util.root_pattern("package.json", "package-lock.json"),
         filetypes = {
             "typescript",
@@ -110,7 +111,7 @@ local eslint = function()
             "javascriptreact",
             "javascript.jsx"
         },
-        single_file_support = true
+        single_file_support = true,
     })
 end
 
@@ -156,20 +157,6 @@ lsp.set_preferences({
 
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
-
-    if check_eslint_config(client) then
-        vim.keymap.set("n", "<leader>F", ":EslintFixAll<CR>", opts)
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            command = ":EslintFixAll",
-        })
-    else
-        vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, opts)
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            command = "lua vim.lsp.buf.format()"
-        })
-    end
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)

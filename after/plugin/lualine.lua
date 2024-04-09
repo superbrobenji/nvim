@@ -4,8 +4,8 @@ require('lualine').setup({
         lualine_x = {
             {
                 "harpoon2",
-                indicators = { "h", "t", "n", "s" },
-                active_indicators = { "[H]", "[T]", "[N]", "[S]" },
+                indicators = { "h", "j", "k", "l" },
+                active_indicators = { "[H]", "[J]", "[K]", "[L]" },
                 separator = " ",
             },
             'filetype',

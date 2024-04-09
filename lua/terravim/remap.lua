@@ -14,11 +14,11 @@ vim.keymap.set("n", "<leader>u", ":UndotreeShow<CR>") -- Open undo tree window
 
 -- window navigation
 vim.keymap.set("n", "<leader>nw", "<C-w>v")                 -- Create new window
-vim.keymap.set("n", "<leader>q", "<C-w>p")                  -- Jump to previous window
-vim.keymap.set("n", "<leader>h", "<C-w>h")                  -- Navigate to left window
-vim.keymap.set("n", "<leader>l", "<C-w>l")                  -- Navigate to right windw
-vim.keymap.set("n", "<leader>j", "<C-w>j")                  -- Navigate to bottom window
-vim.keymap.set("n", "<leader>k", "<C-w>k")                  -- Navigate to top window
+vim.keymap.set("n", "<C-q>", "<C-w>p")                      -- Jump to previous window
+vim.keymap.set("n", "<C-h>", "<C-w>h")                      -- Navigate to left window
+vim.keymap.set("n", "<C-l>", "<C-w>l")                      -- Navigate to right windw
+vim.keymap.set("n", "<C-j>", "<C-w>j")                      -- Navigate to bottom window
+vim.keymap.set("n", "<C-k>", "<C-w>k")                      -- Navigate to top window
 vim.keymap.set("n", "=", [[<cmd>vertical resize +5<cr>]])   -- make the window biger vertically
 vim.keymap.set("n", "-", [[<cmd>vertical resize -5<cr>]])   -- make the window smaller vertically
 vim.keymap.set("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =

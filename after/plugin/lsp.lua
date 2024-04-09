@@ -136,13 +136,6 @@ local dockerls = function()
     })
 end
 
-local check_eslint_config = function(client)
-    if client.name ~= "eslint" and client.name ~= "tsserver" then
-        return false
-    end
-    return true
-end
-
 local ensure_installed = {
     'tsserver',
     'bashls',

@@ -2,7 +2,7 @@ local lsp = require("lsp-zero").preset({})
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 lsp.preset("recommended")
-
+lsp.extend_cmp()
 -- autocompletion
 local cmp_snippet = {
     expand = function(args)
@@ -25,14 +25,17 @@ local cmp_sources = cmp.config.sources({
     { name = 'copilot', group_index = 2 },
 })
 
-local cmp_formatting = lsp.cmp_format({
-    mode = "symbol",
-    max_width = 50,
-    symbol_map = { Copilot = "" },
-    before = function(entry, vim_item)
-        return vim_item
-    end
-})
+local lspkind = require('lspkind')
+local cmp_formatting =
+{
+    format = lspkind.cmp_format({
+        max_width = 50,
+        symbol_map = { Copilot = "" },
+        before = function(entry, vim_item)
+            return vim_item
+        end
+    })
+}
 
 cmp.setup({
     snipet = cmp_snippet,
@@ -150,9 +153,11 @@ local ensure_installed = {
     'dockerls',
 }
 
-
-lsp.set_preferences({
-    sign_icons = {}
+lsp.set_sign_icons({
+    error = '✘',
+    warn = '▲',
+    hint = '⚑',
+    info = '»'
 })
 
 lsp.on_attach(function(client, bufnr)

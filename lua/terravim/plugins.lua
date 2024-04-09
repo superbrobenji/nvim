@@ -26,6 +26,7 @@ local plugins = {
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" }
     },
+    { 'onsails/lspkind.nvim' },
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',

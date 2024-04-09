@@ -1,24 +1,32 @@
 -- enter vim file explorer
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- Go to nvim default file explorer
 
 -- FloaTerm configuration
-vim.keymap.set('n', "<leader>ft", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=5 <CR> ")
-vim.keymap.set('n', "t", ":FloatermToggle myfloat<CR>")
-vim.keymap.set('t', "<Esc>", "<C-\\><C-n>:q<CR>")
-vim.keymap.set('t', "<C-p>", "<C-\\><C-n>:FloatermPrev<CR>")
-vim.keymap.set('t', "<C-n>", "<C-\\><C-n>:FloatermNext<CR>")
-vim.keymap.set('t', "<C-x>", "<C-\\><C-n>:FloatermKill<CR>")
+vim.keymap.set('n', "<leader>ft", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=5 <CR> ") -- Add new terminal instance
+vim.keymap.set('n', "t", ":FloatermToggle myfloat<CR>")                                                       -- Toggle terminal window open/close
+vim.keymap.set('t', "<Esc>", "<C-\\><C-n>:q<CR>")                                                             -- Minimize terminal
+vim.keymap.set('t', "<C-p>", "<C-\\><C-n>:FloatermPrev<CR>")                                                  -- Go to previous terminal instance
+vim.keymap.set('t', "<C-n>", "<C-\\><C-n>:FloatermNext<CR>")                                                  -- Go to next terminal instance
+vim.keymap.set('t', "<C-x>", "<C-\\><C-n>:FloatermKill<CR>")                                                  -- Kill terminal instance
 
 -- undo tree
-vim.keymap.set("n", "<leader>u", ":UndotreeShow<CR>")
+vim.keymap.set("n", "<leader>u", ":UndotreeShow<CR>") -- Open undo tree window
 
 -- window navigation
-vim.keymap.set("n", "<leader>nw", "<C-w>v")
-vim.keymap.set("n", "<leader>w", "<C-w>w")
+vim.keymap.set("n", "<leader>nw", "<C-w>v")                 -- Create new window
+vim.keymap.set("n", "<leader>q", "<C-w>p")                  -- Jump to previous window
+vim.keymap.set("n", "<leader>h", "<C-w>h")                  -- Navigate to left window
+vim.keymap.set("n", "<leader>l", "<C-w>l")                  -- Navigate to right windw
+vim.keymap.set("n", "<leader>j", "<C-w>j")                  -- Navigate to bottom window
+vim.keymap.set("n", "<leader>k", "<C-w>k")                  -- Navigate to top window
+vim.keymap.set("n", "=", [[<cmd>vertical resize +5<cr>]])   -- make the window biger vertically
+vim.keymap.set("n", "-", [[<cmd>vertical resize -5<cr>]])   -- make the window smaller vertically
+vim.keymap.set("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
+vim.keymap.set("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
 
 -- move blocks of code up or down
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- Move codeblock down
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- Move codeblock up
 
 --copy entire line
 vim.keymap.set("n", "Y", "yg$")
@@ -52,30 +60,19 @@ vim.keymap.set("n", "<C-c>", "<Esc>")
 
 -- don't worry about this
 vim.keymap.set("n", "Q", "<nop>")
--- This remap will not work until tmux is set up and the script is installed
+-- project finder using tmux. Needs tmux and tmux config to work
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/scripts/tmux-sessionizer.sh<CR>")
---format all code in file
-vim.keymap.set("n", "<leader>f", function()
-    vim.lsp.buf.format()
-end)
 
 -- jest
-vim.keymap.set("n", "<leader>tf", function()
+vim.keymap.set("n", "<leader>tf", function() -- Test whole file
     require('nvim-jest').test_file()
 end)
-vim.keymap.set("n", "<leader>ts", function()
+vim.keymap.set("n", "<leader>ts", function() -- Test single test
     require('nvim-jest').test_single()
 end)
-vim.keymap.set("n", "<leader>js", function()
+vim.keymap.set("n", "<leader>js", function() -- Stop tests
     require('nvim-jest').test_stop()
 end)
-vim.keymap.set("n", "<leader>js", ":JestStop<CR>")
-
--- navigate errors and locations
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- replace word under cursor
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")

@@ -1,7 +1,5 @@
 # Welcome to my neovim setup.
 
-This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/watch?v=w7i4amO_zaE)
-
 ## Installation
 
 ### Prerequisites

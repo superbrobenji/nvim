@@ -54,7 +54,7 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 #### Installing tmux
 
 - Run `sudo apt-get install tmux` for ubuntu or `brew install tmux` for mac users.
-- copy the contents of [tmux.tokyonight.conf](https://github.com/superbrobenji/dotfiles/blob/master/tmux.tokyonight.conf) into your home directory and [scripts](https://github.com/superbrobenji/dotfiles/tree/master/.local) into your .local file.
+- copy [tmux.tokyonight.conf](https://github.com/superbrobenji/dotfiles/blob/master/tmux.tokyonight.conf) into your home directory and [scripts](https://github.com/superbrobenji/dotfiles/tree/master/.local) into your .local file.
 
 #### Installing fzf
 
@@ -83,7 +83,7 @@ When you want to add a new package, add it to `/lua/terravim/plugins.lua` as the
 
 ## Set Git defaults
 
-You can find my [git defaults](https://github.com/superbrobenji/dotfiles/blob/master/.gitconfig).
+You can find my git defaults [here](https://github.com/superbrobenji/dotfiles/blob/master/.gitconfig).
 
 ## TODOs
 

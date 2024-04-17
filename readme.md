@@ -47,14 +47,14 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 
 #### Config files
 
-- Copy the files from kitty-config into the kitty folder in your config path.
+- Copy the files from [kitty-config](https://github.com/superbrobenji/dotfiles/tree/master/.config/kitty) into the kitty folder in your config path.
 
 ### Installing tmux and fzf
 
 #### Installing tmux
 
 - Run `sudo apt-get install tmux` for ubuntu or `brew install tmux` for mac users.
-- copy the contents of `tmux-setup` into your home directory.
+- copy the contents of [tmux.tokyonight.conf](https://github.com/superbrobenji/dotfiles/blob/master/tmux.tokyonight.conf) into your home directory and [scripts](https://github.com/superbrobenji/dotfiles/tree/master/.local) into your .local file.
 
 #### Installing fzf
 
@@ -66,12 +66,13 @@ This setup is based on the setup from [The PrimeAgen](https://www.youtube.com/wa
 - `:Mason` This opens the LSP package manager where you can find and install any LSP config or linter you want.
 - `:LspInstall` finds and installs any relevant Lsp packages or linters for you file you're on.
 - `:TSUpdate` will update Treesitter.
+- `:Lazy` This opens the Lazy plugin manager where you can install and update your plugins
 
 ## Things to note
 
 - Don't forget to run tmux before opening nvim if you want to be able to jump between projects quickly and easily.
 - The general keymaps are under `/lua/terravim/remap.lua`. Feel free to change them to your preference.
-- The keymaps for each plugin are under their respective config file in `/after/plugin`.
+- The keymaps for each plugin are under their respective config file in `/after/plugin`. If they are not there, then they are defined in the gereral remap file.
 - The general settings for Neovim is under `/lua/terravim/set.lua`
 - If you are using Windows. Go to the `set.lua` file and change the undodir according to the comment.
 - If the icons on the nvim-tree isn't working properly you need to download a [NerdFont](https://www.nerdfonts.com/font-downloads)
@@ -82,10 +83,7 @@ When you want to add a new package, add it to `/lua/terravim/plugins.lua` as the
 
 ## Set Git defaults
 
-- `git config --global pull.rebase true`
-- `git config --global fetch.prune true`
-- `git config --global pull.default current`
-- `git config --global push.default current`
+You can find my [git defaults](https://github.com/superbrobenji/dotfiles/blob/master/.gitconfig).
 
 ## TODOs
 

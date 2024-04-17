@@ -17,6 +17,8 @@
 - Clone this repo inside your config path, you can find the path by opening Neovim and type `:h rtp`.
 - Run `:Copilot auth` and follow the prompts.
 
+## Optional Extras
+
 ### Installing Kitty terminal
 
 #### Installing Kitty

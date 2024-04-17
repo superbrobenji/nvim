@@ -41,11 +41,13 @@
 
 #### Installing Oh My Zsh
 
-- TODO
+- Run `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+- Copy the [.zshrc](https://github.com/superbrobenji/dotfiles/blob/master/.zshrc) file to your home directory
 
-#### Config files
+#### Kitty Config files
 
 - Copy the files from [kitty-config](https://github.com/superbrobenji/dotfiles/tree/master/.config/kitty) into the kitty folder in your config path.
+- Optionally, copy the [.bashrc](https://github.com/superbrobenji/dotfiles/blob/master/.bashrc) file to your home directory.
 
 ### Installing tmux and fzf
 
@@ -85,5 +87,4 @@ You can find my git defaults [here](https://github.com/superbrobenji/dotfiles/bl
 
 ## TODOs
 
-- Add Node debugger for chrome and node in dap.
 - Possinbly write plugin to integrate nuget gallery to nvim.

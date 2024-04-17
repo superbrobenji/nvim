@@ -1,6 +1,10 @@
 # Welcome to my neovim setup.
 ![Screenshot from 2024-04-17 14-32-44](https://github.com/superbrobenji/nvim/assets/49689582/dec748a1-a0c2-4df5-acd1-1720300567d7)
 ![Screenshot from 2024-04-17 14-32-54](https://github.com/superbrobenji/nvim/assets/49689582/b75b977e-231a-4273-97b1-0f0dd09c4ba4)
+
+https://github.com/superbrobenji/nvim/assets/49689582/75a36beb-8879-4119-bf9f-e3b631d7c1a4
+
+
 ## Installation
 
 ### Prerequisites

@@ -24,7 +24,7 @@ require('mason-tool-installer').setup {
         'lua_ls',
 
         -- add gopls if you are going to dev with go, remember to install go first
-        -- 'gopls',
+        'gopls',
 
         'rust_analyzer',
 

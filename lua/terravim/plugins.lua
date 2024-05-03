@@ -83,6 +83,7 @@ local plugins = {
         'stevearc/conform.nvim',
         opts = {},
     },
+    { "terrortylor/nvim-comment" },
 
 }
 return plugins

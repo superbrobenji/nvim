@@ -1,9 +1,9 @@
 # Welcome to my neovim setup.
+
 ![Screenshot from 2024-04-17 14-32-44](https://github.com/superbrobenji/nvim/assets/49689582/dec748a1-a0c2-4df5-acd1-1720300567d7)
 ![Screenshot from 2024-04-17 14-32-54](https://github.com/superbrobenji/nvim/assets/49689582/b75b977e-231a-4273-97b1-0f0dd09c4ba4)
 
 https://github.com/superbrobenji/nvim/assets/49689582/75a36beb-8879-4119-bf9f-e3b631d7c1a4
-
 
 ## Installation
 
@@ -39,12 +39,13 @@ https://github.com/superbrobenji/nvim/assets/49689582/75a36beb-8879-4119-bf9f-e3
 - Run `sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop`
 - Run `sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop`
 
-#### Installing Fira Code fonts
+#### Installing Fira Code fonts and nerd fonts
 
 - For linux, run `sudo apt install fonts-firacode`
 - For macos:
   - Run `brew tap homebrew/cask-fonts`
   - Run `brew install --cask font-fira-code`
+    For Nerd fonts icons download the nerd font [icon pack](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/NerdFontsSymbolsOnly.zip)
 
 #### Installing Oh My Zsh
 
@@ -82,7 +83,6 @@ https://github.com/superbrobenji/nvim/assets/49689582/75a36beb-8879-4119-bf9f-e3
 - The keymaps for each plugin are under their respective config file in `/after/plugin`. If they are not there, then they are defined in the gereral remap file.
 - The general settings for Neovim is under `/lua/terravim/set.lua`
 - If you are using Windows. Go to the `set.lua` file and change the undodir according to the comment.
-- If the icons on the nvim-tree isn't working properly you need to download a [NerdFont](https://www.nerdfonts.com/font-downloads)
 
 ## Adding new packages
 

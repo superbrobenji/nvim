@@ -1,7 +1,6 @@
-local lsp = require("lsp-zero").preset({})
+local lsp = require("lsp-zero")
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-lsp.preset("recommended")
 lsp.extend_cmp()
 -- autocompletion
 local cmp_snippet = {
@@ -135,6 +134,11 @@ local dockerls = function()
         capabilities = capabilities,
     })
 end
+local gopls = function()
+    lsp_config.gopls.setup({
+        capabilities = capabilities,
+    })
+end
 
 local ensure_installed = {
     'tsserver',
@@ -143,6 +147,7 @@ local ensure_installed = {
     'jsonls',
     'lua_ls',
     'graphql',
+    'gopls',
     'dockerls',
 }
 
@@ -175,6 +180,7 @@ require("mason-lspconfig").setup({
         lsp.default_setup,
         lua_ls = lua_ls,
         graphql = graphql,
+        gopls = gopls,
         bashls = bashls,
         jsonls = jsonls,
         taplo = taplo,

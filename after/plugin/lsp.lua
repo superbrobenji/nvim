@@ -47,11 +47,11 @@ require("luasnip.loaders.from_vscode").lazy_load()
 -- language servers
 require('neodev').setup({})
 
-local lsp_config = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lsp_config       = require('lspconfig')
+local capabilities     = require('cmp_nvim_lsp').default_capabilities()
 
 -- language server handlers
-local lua_ls = function()
+local lua_ls           = function()
     lsp_config.lua_ls.setup({
         capabilities = capabilities,
         settings = {
@@ -70,7 +70,7 @@ local lua_ls = function()
     })
 end
 
-local graphql = function()
+local graphql          = function()
     lsp_config.graphql.setup({
         capabilities = capabilities,
         filetypes = {
@@ -82,25 +82,30 @@ local graphql = function()
     })
 end
 
-local bashls = function()
+local bashls           = function()
     lsp_config.bashls.setup({
         capabilities = capabilities,
     })
 end
 
-local jsonls = function()
+local csharp_ls        = function()
+    lsp_config.csharp_ls.setup({
+        capabilities = capabilities,
+    })
+end
+local jsonls           = function()
     lsp_config.jsonls.setup({
         capabilities = capabilities,
     })
 end
 
-local taplo = function()
+local taplo            = function()
     lsp_config.taplo.setup({
         capabilities = capabilities,
     })
 end
 
-local eslint = function()
+local eslint           = function()
     lsp_config.eslint.setup({
         capabilities = capabilities,
         flags = { debounce_text_changes = 500 },
@@ -117,30 +122,36 @@ local eslint = function()
     })
 end
 
-local tsserver = function()
+local tsserver         = function()
     lsp_config.tsserver.setup({
         capabilities = capabilities,
     })
 end
 
-local yamlls = function()
+local yamlls           = function()
     lsp_config.yamlls.setup({
         capabilities = capabilities,
     })
 end
 
-local dockerls = function()
+local dockerls         = function()
     lsp_config.dockerls.setup({
         capabilities = capabilities,
     })
 end
-local gopls = function()
+local gopls            = function()
     lsp_config.gopls.setup({
         capabilities = capabilities,
     })
 end
+local tailwindcss      = function()
+    lsp_config.tailwindcss.setup({
+        capabilities = capabilities
+    })
+end
 
 local ensure_installed = {
+    'csharp_ls',
     'tsserver',
     'bashls',
     'eslint',
@@ -149,6 +160,7 @@ local ensure_installed = {
     'graphql',
     'gopls',
     'dockerls',
+    'tailwindcss',
 }
 
 lsp.set_sign_icons({
@@ -161,12 +173,15 @@ lsp.set_sign_icons({
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
+    client.server_capabilities.documentFormattingProvider = true
+    vim.api.nvim_create_autocmd("BufWritePre", { callback = function() vim.lsp.buf.format() end })
+
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
     vim.keymap.set("n", "<leader>vd", function() vim.lsp.buf.open_float() end, opts)
-    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+    vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = 1 }) end, opts)
+    vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = -1 }) end, opts)
     vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
@@ -179,6 +194,7 @@ require("mason-lspconfig").setup({
     handlers = {
         lsp.default_setup,
         lua_ls = lua_ls,
+        csharp_ls = csharp_ls,
         graphql = graphql,
         gopls = gopls,
         bashls = bashls,
@@ -188,6 +204,7 @@ require("mason-lspconfig").setup({
         tsserver = tsserver,
         yamlls = yamlls,
         dockerls = dockerls,
+        tailwindcss = tailwindcss,
     }
 })
 

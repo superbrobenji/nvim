@@ -1,7 +1,7 @@
 require("neo-tree").setup({
     window = {
-        position = "left",
-        width = 50,
+        position = "right",
+        width = 80,
     },
     event_handlers = {
         {
@@ -32,4 +32,4 @@ require("neo-tree").setup({
         },
     },
 })
-vim.keymap.set("n", "<C-n>", ":Neotree reveal position=left toggle<CR>")
+vim.keymap.set("n", "<C-n>", ":Neotree reveal toggle<CR>")

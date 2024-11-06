@@ -122,8 +122,8 @@ local eslint           = function()
     })
 end
 
-local tsserver         = function()
-    lsp_config.tsserver.setup({
+local ts_ls            = function()
+    lsp_config.ts_ls.setup({
         capabilities = capabilities,
     })
 end
@@ -152,7 +152,7 @@ end
 
 local ensure_installed = {
     'csharp_ls',
-    'tsserver',
+    'ts_ls',
     'bashls',
     'eslint',
     'jsonls',
@@ -201,7 +201,7 @@ require("mason-lspconfig").setup({
         jsonls = jsonls,
         taplo = taplo,
         eslint = eslint,
-        tsserver = tsserver,
+        ts_ls = ts_ls,
         yamlls = yamlls,
         dockerls = dockerls,
         tailwindcss = tailwindcss,

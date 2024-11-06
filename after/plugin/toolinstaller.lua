@@ -11,7 +11,7 @@ require('mason-tool-installer').setup {
 
         'dockerls',
 
-        'tsserver',
+        'ts_ls',
         'eslint',
         'bslint',
         'prettier',

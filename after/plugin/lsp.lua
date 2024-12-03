@@ -170,11 +170,8 @@ lsp.set_sign_icons({
     info = '»'
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
     local opts = { buffer = bufnr, remap = false }
-
-    client.server_capabilities.documentFormattingProvider = true
-    vim.api.nvim_create_autocmd("BufWritePre", { callback = function() vim.lsp.buf.format() end })
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)

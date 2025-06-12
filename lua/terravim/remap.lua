@@ -63,17 +63,6 @@ vim.keymap.set("n", "Q", "<nop>")
 -- project finder using tmux. Needs tmux and tmux config to work
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/scripts/tmux-sessionizer.sh<CR>")
 
--- jest
-vim.keymap.set("n", "<leader>tf", function() -- Test whole file
-    require('nvim-jest').test_file()
-end)
-vim.keymap.set("n", "<leader>ts", function() -- Test single test
-    require('nvim-jest').test_single()
-end)
-vim.keymap.set("n", "<leader>js", function() -- Stop tests
-    require('nvim-jest').test_stop()
-end)
-
 -- replace word under cursor
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 -- make file executable

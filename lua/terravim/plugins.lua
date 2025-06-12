@@ -83,7 +83,18 @@ local plugins = {
         'stevearc/conform.nvim',
         opts = {},
     },
-    { "terrortylor/nvim-comment" },
+    {
+        "terrortylor/nvim-comment",
+        dependencies = {
+            { 'leoluz/nvim-dap-go' },
+            { 'mfussenegger/nvim-dap' },
+            { 'rcarriga/nvim-dap-ui' },
+            { 'theHamsta/nvim-dap-virtual-text' },
+            { 'nvim-neotest/nvim-nio' },
+            { 'williamboman/mason.nvim' },
+        },
+    },
+
 
 }
 return plugins

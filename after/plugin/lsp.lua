@@ -30,7 +30,7 @@ local cmp_formatting =
     format = lspkind.cmp_format({
         max_width = 50,
         symbol_map = { Copilot = "" },
-        before = function(entry, vim_item)
+        before = function(_, vim_item)
             return vim_item
         end
     })
@@ -45,7 +45,7 @@ cmp.setup({
 require("luasnip.loaders.from_vscode").lazy_load()
 
 -- language servers
-require('neodev').setup({})
+require('neodev').setup()
 
 local lsp_config       = require('lspconfig')
 local capabilities     = require('cmp_nvim_lsp').default_capabilities()
@@ -134,11 +134,18 @@ local yamlls           = function()
     })
 end
 
+local pyright          = function()
+    lsp_config.pyright.setup({
+        capabilities = capabilities,
+    })
+end
+
 local dockerls         = function()
     lsp_config.dockerls.setup({
         capabilities = capabilities,
     })
 end
+
 local gopls            = function()
     lsp_config.gopls.setup({
         capabilities = capabilities,
@@ -151,6 +158,7 @@ local tailwindcss      = function()
 end
 
 local ensure_installed = {
+    'pyright',
     'csharp_ls',
     'ts_ls',
     'bashls',
@@ -185,7 +193,7 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
-require("mason").setup({})
+require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = ensure_installed,
     handlers = {
@@ -198,6 +206,7 @@ require("mason-lspconfig").setup({
         jsonls = jsonls,
         taplo = taplo,
         eslint = eslint,
+        pyright = pyright,
         ts_ls = ts_ls,
         yamlls = yamlls,
         dockerls = dockerls,

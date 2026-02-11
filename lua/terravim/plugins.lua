@@ -94,6 +94,11 @@ local plugins = {
             { 'williamboman/mason.nvim' },
         },
     },
+    { 'nicholasmata/nvim-dap-cs', dependencies = { 'mfussenegger/nvim-dap' } },
+    {
+        "Cliffback/netcoredbg-macOS-arm64.nvim",
+        dependencies = { "mfussenegger/nvim-dap" }
+    },
 
 
 }

@@ -157,6 +157,12 @@ local tailwindcss      = function()
     })
 end
 
+local yamlls           = function()
+    lsp_config.yamlls.setup({
+        capabilities = capabilities
+    })
+end
+
 local ensure_installed = {
     'pyright',
     'csharp_ls',
@@ -169,6 +175,7 @@ local ensure_installed = {
     'gopls',
     'dockerls',
     'tailwindcss',
+    'yamlls',
 }
 
 lsp.set_sign_icons({
@@ -211,6 +218,7 @@ require("mason-lspconfig").setup({
         yamlls = yamlls,
         dockerls = dockerls,
         tailwindcss = tailwindcss,
+        yamlls = yamlls,
     }
 })
 

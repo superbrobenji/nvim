@@ -33,6 +33,7 @@ local plugins = {
     { 'onsails/lspkind.nvim' },
     {
         "folke/snacks.nvim",
+        lazy = false,
         opts = {
             input = { enabled = true },
             terminal = {

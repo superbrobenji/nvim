@@ -5,6 +5,6 @@ require('nvim-treesitter').install({
     'query', 'rust', 'toml', 'go', 'c_sharp', 'bash', 'graphql',
 })
 
-require('nvim-treesitter-context').setup({ multiline_threshold = 4 })
+require('treesitter-context').setup({ multiline_threshold = 4 })
 
 require('nvim-ts-autotag').setup()

@@ -1,10 +1,9 @@
 local plugins = {
     {
         "folke/tokyonight.nvim",
-        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
+        lazy = false,
+        priority = 1000,
         config = function()
-            -- load the colorscheme here
             vim.cmd([[colorscheme tokyonight]])
         end,
     },
@@ -13,7 +12,6 @@ local plugins = {
         version = '*',
         dependencies = {
             'nvim-lua/plenary.nvim',
-            -- optional but recommended
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         }
     },
@@ -37,36 +35,84 @@ local plugins = {
         "folke/snacks.nvim",
         opts = {
             input = { enabled = true },
+            terminal = {
+                enabled = true,
+                win = { style = 'terminal' },
+            },
         },
     },
+    -- LSP stack (mason-org renames + native lspconfig)
+    { 'mason-org/mason.nvim' },
+    { 'mason-org/mason-lspconfig.nvim' },
+    { 'neovim/nvim-lspconfig' },
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x',
-        dependencies = {
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
-            { 'neovim/nvim-lspconfig' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/nvim-cmp' },
-            { "L3MON4D3/LuaSnip",                 run = "make install_jsregexp" },
-            { 'saadparwaiz1/cmp_luasnip' },
-            { "folke/neodev.nvim",                opts = {} },
-        }
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {},
     },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-cmdline" },
+    -- blink.cmp replaces nvim-cmp + LuaSnip + copilot-cmp
+    {
+        'saghen/blink.cmp',
+        version = '1.*',
+        dependencies = {
+            'rafamadriz/friendly-snippets',
+            'giuxtaposition/blink-cmp-copilot',
+            'folke/lazydev.nvim',
+        },
+        opts = {
+            keymap = {
+                ['<C-n>']     = { 'select_next', 'fallback' },
+                ['<C-p>']     = { 'select_prev', 'fallback' },
+                ['<C-y>']     = { 'accept' },
+                ['<C-Space>'] = { 'show' },
+            },
+            appearance = { nerd_font_variant = 'mono' },
+            completion = {
+                documentation = { auto_show = true },
+                menu = {
+                    draw = {
+                        components = {
+                            kind_icon = {
+                                text = function(ctx)
+                                    return require('lspkind').symbolic(ctx.kind, { mode = 'symbol' })
+                                end,
+                            },
+                        },
+                    },
+                },
+            },
+            sources = {
+                default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+                providers = {
+                    lazydev = {
+                        name = 'LazyDev',
+                        module = 'lazydev.integrations.blink',
+                        score_offset = 100,
+                    },
+                    copilot = {
+                        name = 'copilot',
+                        module = 'blink-cmp-copilot',
+                        score_offset = 100,
+                        async = true,
+                    },
+                },
+            },
+            cmdline = { enabled = true },
+            fuzzy = { implementation = 'prefer_rust_with_warning' },
+        },
+        opts_extend = { 'sources.default' },
+    },
     {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         event = "InsertEnter",
     },
-    { "zbirenbaum/copilot-cmp" },
+    -- Comment.nvim replaces nvim-comment
+    { 'numToStr/Comment.nvim' },
     { "lukas-reineke/indent-blankline.nvim", lazy = false, main = "ibl", opts = {} },
     { "HiPhish/rainbow-delimiters.nvim" },
-    lazy = false,
     { "mbbill/undotree" },
     { "tpope/vim-fugitive" },
-    { "voldikss/vim-floaterm" },
     { "WhoIsSethDaniel/mason-tool-installer.nvim" },
     {
         "nvim-neo-tree/neo-tree.nvim",
@@ -95,21 +141,17 @@ local plugins = {
         'stevearc/conform.nvim',
         opts = {},
     },
+    -- DAP stack (top-level, conditional cond guards)
+    { 'mfussenegger/nvim-dap' },
+    { 'rcarriga/nvim-dap-ui',             dependencies = { 'nvim-neotest/nvim-nio' } },
+    { 'theHamsta/nvim-dap-virtual-text' },
+    { 'jay-babu/mason-nvim-dap.nvim' },
+    { 'leoluz/nvim-dap-go',               cond = function() return vim.fn.executable('go') == 1 end },
+    { 'nicholasmata/nvim-dap-cs',         cond = function() return vim.fn.executable('dotnet') == 1 end },
     {
-        "terrortylor/nvim-comment",
-        dependencies = {
-            { 'leoluz/nvim-dap-go' },
-            { 'mfussenegger/nvim-dap' },
-            { 'rcarriga/nvim-dap-ui' },
-            { 'theHamsta/nvim-dap-virtual-text' },
-            { 'nvim-neotest/nvim-nio' },
-            { 'williamboman/mason.nvim' },
-        },
-    },
-    { 'nicholasmata/nvim-dap-cs', dependencies = { 'mfussenegger/nvim-dap' } },
-    {
-        "Cliffback/netcoredbg-macOS-arm64.nvim",
-        dependencies = { "mfussenegger/nvim-dap" }
+        'Cliffback/netcoredbg-macOS-arm64.nvim',
+        cond = function() return vim.fn.executable('dotnet') == 1 end,
+        dependencies = { 'mfussenegger/nvim-dap' },
     },
     {
         "yetone/avante.nvim",
@@ -118,25 +160,21 @@ local plugins = {
         build = vim.fn.has("win32") ~= 0
             and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
             or "make",
-        version = false, -- Never set this value to "*"! Never!
+        version = false,
         ---@module 'avante'
         ---@type avante.Config
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
-            --- The below dependencies are optional,
-            "nvim-mini/mini.pick",           -- for file_selector provider mini.pick
-            "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-            "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
-            "ibhagwan/fzf-lua",              -- for file_selector provider fzf
-            "folke/snacks.nvim",             -- for input provider snacks
-            "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+            "nvim-mini/mini.pick",
+            "nvim-telescope/telescope.nvim",
+            "ibhagwan/fzf-lua",
+            "folke/snacks.nvim",
+            "nvim-tree/nvim-web-devicons",
             {
-                -- support for image pasting
                 "HakonHarnes/img-clip.nvim",
                 event = "VeryLazy",
                 opts = {
-                    -- recommended settings
                     default = {
                         embed_image_as_base64 = false,
                         prompt_for_file_name = false,
@@ -147,7 +185,6 @@ local plugins = {
                 },
             },
             {
-                -- Make sure to set this up properly if you have lazy=true
                 'MeanderingProgrammer/render-markdown.nvim',
                 opts = {
                     file_types = { "markdown", "Avante" },

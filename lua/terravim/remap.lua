@@ -1,13 +1,16 @@
 -- enter vim file explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- Go to nvim default file explorer
 
--- FloaTerm configuration
-vim.keymap.set('n', "<leader>ft", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=5 <CR> ") -- Add new terminal instance
-vim.keymap.set('n', "t", ":FloatermToggle myfloat<CR>")                                                       -- Toggle terminal window open/close
-vim.keymap.set('t', "<Esc>", "<C-\\><C-n>:q<CR>")                                                             -- Minimize terminal
-vim.keymap.set('t', "<C-p>", "<C-\\><C-n>:FloatermPrev<CR>")                                                  -- Go to previous terminal instance
-vim.keymap.set('t', "<C-n>", "<C-\\><C-n>:FloatermNext<CR>")                                                  -- Go to next terminal instance
-vim.keymap.set('t', "<C-x>", "<C-\\><C-n>:FloatermKill<CR>")                                                  -- Kill terminal instance
+-- snacks terminal
+vim.keymap.set('n', '<leader>nt', function() Snacks.terminal.open() end)
+vim.keymap.set('n', 't',          function() Snacks.terminal.toggle() end)
+vim.keymap.set('t', '<Esc>',      function() Snacks.terminal.toggle() end)
+vim.keymap.set('t', '<C-p>',      function() Snacks.terminal.open({ win = { relative = 'editor' } }) end)
+vim.keymap.set('t', '<C-n>',      function() Snacks.terminal.open() end)
+vim.keymap.set('t', '<C-x>',      function()
+    local term = Snacks.terminal.get()
+    if term then term:kill() end
+end)
 
 -- undo tree
 vim.keymap.set("n", "<leader>u", ":UndotreeShow<CR>") -- Open undo tree window

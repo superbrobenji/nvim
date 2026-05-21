@@ -15,7 +15,7 @@ vim.keymap.set('n', '<leader>nt', function()
     vim.cmd((max_id + 1) .. 'ToggleTerm')
 end)
 
-vim.keymap.set('t', '<C-n>', function()
+local function cycle_next_term()
     local terms = require('toggleterm.terminal').get_all(true)
     if #terms <= 1 then return end
     local cur = vim.b.toggle_number
@@ -25,7 +25,15 @@ vim.keymap.set('t', '<C-n>', function()
     end
     local next_idx = (idx % #terms) + 1
     terms[next_idx]:open()
-end)
+end
+
+vim.keymap.set('t', '<C-n>', cycle_next_term, { nowait = true })
+
+vim.api.nvim_create_autocmd('TermOpen', {
+    callback = function()
+        vim.keymap.set('n', '<C-n>', cycle_next_term, { buffer = true })
+    end,
+})
 
 vim.keymap.set('t', '<C-p>', function()
     local terms = require('toggleterm.terminal').get_all(true)
@@ -37,7 +45,7 @@ vim.keymap.set('t', '<C-p>', function()
     end
     local prev_idx = ((idx - 2 + #terms) % #terms) + 1
     terms[prev_idx]:open()
-end)
+end, { nowait = true })
 
 vim.keymap.set('t', '<C-x>', function()
     local terms = require('toggleterm.terminal').get_all(true)

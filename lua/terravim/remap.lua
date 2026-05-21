@@ -1,15 +1,55 @@
 -- enter vim file explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- Go to nvim default file explorer
 
--- snacks terminal
-vim.keymap.set('n', '<leader>nt', function() Snacks.terminal.open() end)
-vim.keymap.set('n', 't',          function() Snacks.terminal.toggle() end)
-vim.keymap.set('t', '<Esc>',      function() Snacks.terminal.toggle() end)
-vim.keymap.set('t', '<C-p>',      function() Snacks.terminal.open({ win = { relative = 'editor' } }) end)
-vim.keymap.set('t', '<C-n>',      function() Snacks.terminal.open() end)
-vim.keymap.set('t', '<C-x>',      function()
-    local term = Snacks.terminal.get()
-    if term then term:kill() end
+-- toggleterm
+vim.keymap.set('n', 't', '<cmd>ToggleTerm<CR>')
+vim.keymap.set('t', '<C-t>', '<cmd>ToggleTerm<CR>')
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
+
+vim.keymap.set('n', '<leader>nt', function()
+    local terms = require('toggleterm.terminal').get_all(true)
+    local max_id = 0
+    for _, t in ipairs(terms) do
+        if t.id > max_id then max_id = t.id end
+    end
+    vim.cmd((max_id + 1) .. 'ToggleTerm')
+end)
+
+vim.keymap.set('t', '<C-n>', function()
+    local terms = require('toggleterm.terminal').get_all(true)
+    if #terms <= 1 then return end
+    local cur = vim.b.toggle_number
+    local idx = 1
+    for i, t in ipairs(terms) do
+        if t.id == cur then idx = i break end
+    end
+    local next_idx = (idx % #terms) + 1
+    terms[next_idx]:open()
+end)
+
+vim.keymap.set('t', '<C-p>', function()
+    local terms = require('toggleterm.terminal').get_all(true)
+    if #terms <= 1 then return end
+    local cur = vim.b.toggle_number
+    local idx = 1
+    for i, t in ipairs(terms) do
+        if t.id == cur then idx = i break end
+    end
+    local prev_idx = ((idx - 2) % #terms) + 1
+    terms[prev_idx]:open()
+end)
+
+vim.keymap.set('t', '<C-x>', function()
+    local terms = require('toggleterm.terminal').get_all(true)
+    local cur_id = vim.b.toggle_number
+    local prev = nil
+    for _, t in ipairs(terms) do
+        if t.id ~= cur_id then prev = t end
+        if t.id == cur_id then break end
+    end
+    local cur = require('toggleterm.terminal').get(cur_id)
+    if cur then cur:shutdown() end
+    if prev then prev:open() end
 end)
 
 -- undo tree

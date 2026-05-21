@@ -35,7 +35,7 @@ vim.keymap.set('t', '<C-p>', function()
     for i, t in ipairs(terms) do
         if t.id == cur then idx = i break end
     end
-    local prev_idx = ((idx - 2) % #terms) + 1
+    local prev_idx = ((idx - 2 + #terms) % #terms) + 1
     terms[prev_idx]:open()
 end)
 

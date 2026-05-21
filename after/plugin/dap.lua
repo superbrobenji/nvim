@@ -55,7 +55,7 @@ end
 local function pick_npm_script()
     local pkg_file = vim.fn.findfile('package.json', vim.fn.getcwd() .. ';')
     if pkg_file == '' then return { vim.fn.input('npm script: ') } end
-    local ok, pkg = pcall(vim.fn.json_decode, table.concat(vim.fn.readfile(pkg_file), '\n'))
+    local ok, pkg = pcall(vim.fn.json_decode, table.concat(vim.fn.readfile(pkg_file) --[[@as string[] ]], '\n'))
     if not ok or not pkg.scripts then return { vim.fn.input('npm script: ') } end
     local scripts = vim.tbl_keys(pkg.scripts)
     table.sort(scripts)

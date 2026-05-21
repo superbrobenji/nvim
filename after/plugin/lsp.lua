@@ -23,7 +23,7 @@ vim.lsp.config('lua_ls', {
         Lua = {
             format     = { enable = true },
             completion = { callSnippet = 'Replace' },
-            diagnostics = { globals = { 'vim' } },
+            diagnostics = { globals = { 'vim', 'Snacks' } },
         }
     }
 })

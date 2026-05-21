@@ -34,6 +34,7 @@ local plugins = {
     {
         "folke/snacks.nvim",
         lazy = false,
+        priority = 1000,
         opts = {
             input = { enabled = true },
             terminal = {
@@ -162,8 +163,6 @@ local plugins = {
             and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
             or "make",
         version = false,
-        ---@module 'avante'
-        ---@type avante.Config
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",

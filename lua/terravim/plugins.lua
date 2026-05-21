@@ -37,12 +37,10 @@ local plugins = {
         priority = 1000,
         opts = {
             input = { enabled = true },
-            terminal = {
-                enabled = true,
-                win = { style = 'terminal' },
-            },
+            terminal = { enabled = false },
         },
     },
+    { 'akinsho/toggleterm.nvim', version = '*' },
     -- LSP stack (mason-org renames + native lspconfig)
     { 'mason-org/mason.nvim' },
     { 'mason-org/mason-lspconfig.nvim' },

@@ -1,226 +1,80 @@
-local lsp = require("lsp-zero")
-local cmp = require('cmp')
-local luasnip = require('luasnip')
-lsp.extend_cmp()
--- autocompletion
-local cmp_snippet = {
-    expand = function(args)
-        luasnip.lsp_expand(args.body)
-    end,
-}
-
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = cmp.mapping.preset.insert({
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-Space>'] = cmp.mapping.complete()
+vim.lsp.config('*', {
+    capabilities = require('blink.cmp').get_lsp_capabilities(),
 })
 
-local cmp_sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'path' },
-    { name = 'buffer' },
-    { name = 'copilot', group_index = 2 },
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(ev)
+        local opts = { buffer = ev.buf, remap = false }
+        vim.keymap.set('n', 'gd',           vim.lsp.buf.definition,      opts)
+        vim.keymap.set('n', 'K',            vim.lsp.buf.hover,            opts)
+        vim.keymap.set('n', '<leader>vws',  vim.lsp.buf.workspace_symbol, opts)
+        vim.keymap.set('n', '<leader>vd',   vim.diagnostic.open_float,    opts)
+        vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = 1,  float = true }) end, opts)
+        vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = -1, float = true }) end, opts)
+        vim.keymap.set('n', '<leader>vca',  vim.lsp.buf.code_action,      opts)
+        vim.keymap.set('n', '<leader>vrr',  vim.lsp.buf.references,       opts)
+        vim.keymap.set('n', '<leader>vrn',  vim.lsp.buf.rename,           opts)
+        vim.keymap.set('i', '<C-h>',        vim.lsp.buf.signature_help,   opts)
+    end
 })
 
-local lspkind = require('lspkind')
-local cmp_formatting =
-{
-    format = lspkind.cmp_format({
-        max_width = 50,
-        symbol_map = { Copilot = "" },
-        before = function(_, vim_item)
-            return vim_item
-        end
-    })
-}
-
-cmp.setup({
-    snipet = cmp_snippet,
-    sources = cmp_sources,
-    mapping = cmp_mappings,
-    formatting = cmp_formatting
-})
-require("luasnip.loaders.from_vscode").lazy_load()
-
--- language servers
-require('neodev').setup()
-
-local lsp_config       = require('lspconfig')
-local capabilities     = require('cmp_nvim_lsp').default_capabilities()
-
--- language server handlers
-local lua_ls           = function()
-    lsp_config.lua_ls.setup({
-        capabilities = capabilities,
-        settings = {
-            Lua = {
-                format = {
-                    enable = true,
-                },
-                completion = {
-                    callSnippet = "Replace"
-                },
-                diagnostics = {
-                    globals = { 'vim' }
-                }
-            }
+vim.lsp.config('lua_ls', {
+    settings = {
+        Lua = {
+            format     = { enable = true },
+            completion = { callSnippet = 'Replace' },
+            diagnostics = { globals = { 'vim' } },
         }
-    })
-end
-
-local graphql          = function()
-    lsp_config.graphql.setup({
-        capabilities = capabilities,
-        filetypes = {
-            "graphql",
-            "typescriptreact",
-            "javascriptreact",
-            "typescript"
-        },
-    })
-end
-
-local bashls           = function()
-    lsp_config.bashls.setup({
-        capabilities = capabilities,
-    })
-end
-
-local csharp_ls        = function()
-    lsp_config.csharp_ls.setup({
-        capabilities = capabilities,
-    })
-end
-local jsonls           = function()
-    lsp_config.jsonls.setup({
-        capabilities = capabilities,
-    })
-end
-
-local taplo            = function()
-    lsp_config.taplo.setup({
-        capabilities = capabilities,
-    })
-end
-
-local eslint           = function()
-    lsp_config.eslint.setup({
-        capabilities = capabilities,
-        flags = { debounce_text_changes = 500 },
-        root_dir = lsp_config.util.root_pattern("package.json", "package-lock.json"),
-        filetypes = {
-            "typescript",
-            "typescriptreact",
-            "typescript.tsx",
-            "javascript",
-            "javascriptreact",
-            "javascript.jsx"
-        },
-        single_file_support = true,
-    })
-end
-
-local ts_ls            = function()
-    lsp_config.ts_ls.setup({
-        capabilities = capabilities,
-    })
-end
-
-local yamlls           = function()
-    lsp_config.yamlls.setup({
-        capabilities = capabilities,
-    })
-end
-
-local pyright          = function()
-    lsp_config.pyright.setup({
-        capabilities = capabilities,
-    })
-end
-
-local dockerls         = function()
-    lsp_config.dockerls.setup({
-        capabilities = capabilities,
-    })
-end
-
-local gopls            = function()
-    lsp_config.gopls.setup({
-        capabilities = capabilities,
-    })
-end
-local tailwindcss      = function()
-    lsp_config.tailwindcss.setup({
-        capabilities = capabilities
-    })
-end
-
-local yamlls           = function()
-    lsp_config.yamlls.setup({
-        capabilities = capabilities
-    })
-end
-
-local ensure_installed = {
-    'pyright',
-    'csharp_ls',
-    'ts_ls',
-    'bashls',
-    'eslint',
-    'jsonls',
-    'lua_ls',
-    'graphql',
-    'gopls',
-    'dockerls',
-    'tailwindcss',
-    'yamlls',
-}
-
-lsp.set_sign_icons({
-    error = '✘',
-    warn = '▲',
-    hint = '⚑',
-    info = '»'
-})
-
-lsp.on_attach(function(_, bufnr)
-    local opts = { buffer = bufnr, remap = false }
-
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-    vim.keymap.set("n", "<leader>vd", function() vim.lsp.buf.open_float() end, opts)
-    vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = 1, float = true }) end, opts)
-    vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = -1, float = true }) end, opts)
-    vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-end)
-
-require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = ensure_installed,
-    handlers = {
-        lsp.default_setup,
-        lua_ls = lua_ls,
-        csharp_ls = csharp_ls,
-        graphql = graphql,
-        gopls = gopls,
-        bashls = bashls,
-        jsonls = jsonls,
-        taplo = taplo,
-        eslint = eslint,
-        pyright = pyright,
-        ts_ls = ts_ls,
-        yamlls = yamlls,
-        dockerls = dockerls,
-        tailwindcss = tailwindcss,
-        yamlls = yamlls,
     }
 })
 
+vim.lsp.config('graphql', {
+    filetypes = { 'graphql', 'typescriptreact', 'javascriptreact', 'typescript' },
+})
 
-lsp.setup()
+vim.lsp.config('eslint', {
+    flags = { debounce_text_changes = 500 },
+    root_dir = function(fname)
+        return vim.fs.root(fname, { 'package.json', 'package-lock.json' })
+    end,
+    filetypes = {
+        'typescript', 'typescriptreact', 'typescript.tsx',
+        'javascript', 'javascriptreact', 'javascript.jsx',
+    },
+    single_file_support = true,
+})
+
+vim.lsp.config('ts_ls', {})
+vim.lsp.config('tailwindcss', {})
+
+if vim.fn.executable('dotnet') == 1 then
+    vim.lsp.config('csharp_ls', {})
+end
+
+if vim.fn.executable('go') == 1 then
+    vim.lsp.config('gopls', {})
+end
+
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = '✘',
+            [vim.diagnostic.severity.WARN]  = '▲',
+            [vim.diagnostic.severity.HINT]  = '⚑',
+            [vim.diagnostic.severity.INFO]  = '»',
+        }
+    }
+})
+
+local lsp_ensure = {
+    'pyright', 'ts_ls', 'bashls', 'eslint', 'jsonls',
+    'lua_ls', 'graphql', 'dockerls', 'tailwindcss', 'yamlls', 'taplo',
+}
+if vim.fn.executable('go') == 1     then table.insert(lsp_ensure, 'gopls') end
+if vim.fn.executable('dotnet') == 1 then table.insert(lsp_ensure, 'csharp_ls') end
+
+require('mason').setup()
+require('mason-lspconfig').setup({
+    ensure_installed = lsp_ensure,
+    automatic_enable = true,
+})

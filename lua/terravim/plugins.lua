@@ -10,11 +10,17 @@ local plugins = {
     },
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.6',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        version = '*',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            -- optional but recommended
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        }
     },
     {
         'nvim-treesitter/nvim-treesitter',
+        branch = 'main',
+        lazy = false,
         build = ':TSUpdate',
         dependencies = {
             "windwp/nvim-ts-autotag",
@@ -28,6 +34,12 @@ local plugins = {
     },
     { 'onsails/lspkind.nvim' },
     {
+        "folke/snacks.nvim",
+        opts = {
+            input = { enabled = true },
+        },
+    },
+    {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
         dependencies = {
@@ -36,7 +48,7 @@ local plugins = {
             { 'neovim/nvim-lspconfig' },
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/nvim-cmp' },
-            { 'L3MON4D3/LuaSnip' },
+            { "L3MON4D3/LuaSnip",                 run = "make install_jsregexp" },
             { 'saadparwaiz1/cmp_luasnip' },
             { "folke/neodev.nvim",                opts = {} },
         }
@@ -99,7 +111,50 @@ local plugins = {
         "Cliffback/netcoredbg-macOS-arm64.nvim",
         dependencies = { "mfussenegger/nvim-dap" }
     },
-
-
+    {
+        "yetone/avante.nvim",
+        event = "VeryLazy",
+        instructions_file = "avante.md",
+        build = vim.fn.has("win32") ~= 0
+            and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+            or "make",
+        version = false, -- Never set this value to "*"! Never!
+        ---@module 'avante'
+        ---@type avante.Config
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            --- The below dependencies are optional,
+            "nvim-mini/mini.pick",           -- for file_selector provider mini.pick
+            "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+            "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
+            "ibhagwan/fzf-lua",              -- for file_selector provider fzf
+            "folke/snacks.nvim",             -- for input provider snacks
+            "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+            {
+                -- support for image pasting
+                "HakonHarnes/img-clip.nvim",
+                event = "VeryLazy",
+                opts = {
+                    -- recommended settings
+                    default = {
+                        embed_image_as_base64 = false,
+                        prompt_for_file_name = false,
+                        drag_and_drop = {
+                            insert_mode = true,
+                        },
+                    },
+                },
+            },
+            {
+                -- Make sure to set this up properly if you have lazy=true
+                'MeanderingProgrammer/render-markdown.nvim',
+                opts = {
+                    file_types = { "markdown", "Avante" },
+                },
+                ft = { "markdown", "Avante" },
+            },
+        },
+    }
 }
 return plugins

@@ -17,7 +17,7 @@ vim.opt.backup = false
 -- Windows
 -- vim.opt.undodir = os.getenv("UserProfile") .. "/.vim/undodir"
 -- Linux
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = vim.fn.stdpath('data') .. '/undodir'
 
 vim.opt.undofile = true
 
@@ -35,3 +35,6 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "100"
 
 vim.g.mapleader = " "
+
+-- Avante config
+vim.opt.laststatus = 3

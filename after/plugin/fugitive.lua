@@ -1,6 +1,7 @@
 local float_win = nil
 
 local function open_float(buf)
+    if not vim.api.nvim_buf_is_valid(buf) then return end
     if float_win and vim.api.nvim_win_is_valid(float_win) then
         vim.api.nvim_win_set_buf(float_win, buf)
         vim.api.nvim_set_current_win(float_win)
@@ -49,8 +50,8 @@ vim.api.nvim_create_autocmd("FileType", {
                 if vim.api.nvim_win_get_buf(win) == buf then
                     local cfg = vim.api.nvim_win_get_config(win)
                     if cfg.relative == "" then
-                        vim.api.nvim_win_close(win, false)
                         open_float(buf)
+                        vim.api.nvim_win_close(win, false)
                         if vim.bo[buf].filetype == "gitcommit" then
                             vim.api.nvim_create_autocmd("BufWipeout", {
                                 buffer = buf,

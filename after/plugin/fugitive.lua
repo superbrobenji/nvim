@@ -29,15 +29,30 @@ local function openGit()
 end
 
 vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("FugitiveFloat", { clear = true }),
     pattern = { "gitcommit", "git" },
-    callback = function()
+    callback = function(args)
+        local buf = args.buf
         vim.schedule(function()
-            local win = vim.api.nvim_get_current_win()
-            local cfg = vim.api.nvim_win_get_config(win)
-            if cfg.relative == "" then
-                local buf = vim.api.nvim_win_get_buf(win)
-                vim.api.nvim_win_close(win, false)
-                open_float(buf)
+            if not vim.api.nvim_buf_is_valid(buf) then return end
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                if vim.api.nvim_win_get_buf(win) == buf then
+                    local cfg = vim.api.nvim_win_get_config(win)
+                    if cfg.relative == "" then
+                        vim.api.nvim_win_close(win, false)
+                        open_float(buf)
+                        if vim.bo[buf].filetype == "gitcommit" then
+                            vim.api.nvim_create_autocmd("BufWipeout", {
+                                buffer = buf,
+                                once = true,
+                                callback = function()
+                                    vim.schedule(openGit)
+                                end,
+                            })
+                        end
+                    end
+                    return
+                end
             end
         end)
     end,

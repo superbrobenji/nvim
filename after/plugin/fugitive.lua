@@ -20,6 +20,15 @@ local function open_float(buf)
     end
 end
 
+vim.api.nvim_create_autocmd("WinClosed", {
+    group = vim.api.nvim_create_augroup("FugitiveFloatClose", { clear = true }),
+    callback = function(ev)
+        if tonumber(ev.match) == float_win then
+            float_win = nil
+        end
+    end,
+})
+
 local function openGit()
     vim.cmd.Git()
     local buf = vim.api.nvim_get_current_buf()
@@ -35,6 +44,7 @@ vim.api.nvim_create_autocmd("FileType", {
         local buf = args.buf
         vim.schedule(function()
             if not vim.api.nvim_buf_is_valid(buf) then return end
+            if not (float_win and vim.api.nvim_win_is_valid(float_win)) then return end
             for _, win in ipairs(vim.api.nvim_list_wins()) do
                 if vim.api.nvim_win_get_buf(win) == buf then
                     local cfg = vim.api.nvim_win_get_config(win)

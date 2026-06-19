@@ -8,7 +8,6 @@ require('avante').setup({
         },
     },
     provider = "claude",
-    
     providers = {
         claude = {
             endpoint = "https://api.anthropic.com",
